@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>REMEX - Online Banking</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--[if lte IE 8]>
+    <script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <link rel="stylesheet" href="assets/css/ngDialog.min.css"/>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
+
+    <style>
+        .ngdialog-content {
+            position: absolute;
+            left: 50%;
+            top: 20%;
+            padding: 2em;
+            margin-left: -12%;
+        }
+    </style>
+
+</head>
+<body ng-app="hdmBankingLogin" class="landing">
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <header id="header" class="alt">
+        <h1><a href="#/">HdM Online Banking</a> - {{ 'UNIVERSITY_NAME' | translate }}</h1>
+        <nav id="nav">
+            <ul>
+                <li><a href="#/">{{ 'HOME' | translate }}</a></li>
+                <li><a href="#">{{ 'DOCUMENTATION' | translate }}</a></li>
+                <li><a href="#">GPII</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Banner -->
+    <section id="banner" ng-controller="MainCtrl">
+
+        <h2 class="banking-hero" style="line-height:100px; background-color:red;">HdM Online Banking</h2>
+
+        <p>{{ 'HEADER_ACCESSIBLE_BANKING' | translate }}</p>
+        <ul class="actions">
+            <li><a ng-click="clickToOpen()" class="button special">{{ 'START_DEMO' | translate }}</a></li>
+            <li><a href="#/#features" class="button">{{ 'LEARN_MORE' | translate }}</a></li>
+        </ul>
+    </section>
+
+    <!-- Main -->
+    <section id="main" class="container">
+
+        <section class="box special">
+            <header class="major">
+                <h2>{{ 'HEADER_SPECIAL_LINE_1' | translate }}<br/>{{ 'HEADER_SPECIAL_LINE_2' | translate }}</h2>
+                <p>{{ 'HEADER_PROJECT_SUMMARY_LINE_1' | translate }}<br/>{{ 'HEADER_PROJECT_SUMMARY_LINE_2' | translate }}</p>
+            </header>
+        </section>
+
+        <section id="features" class="box special features" ng-controller="PageCtrl">
+            <div ng-view></div>
+        </section>
+
+        <section id="languages" class="box special features" ng-controller="LangCtrl">
+            <ul class="actions">
+                <li><a ng-click="changeLanguage('en')" class="button">EN</a></li>
+                <li><a ng-click="changeLanguage('de')" class="button">DE</a></li>
+            </ul>
+        </section>
+
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <ul class="icons">
+            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+            <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+        </ul>
+        <ul class="copyright">
+            <li>HdM Stuttgart. REMEX.</li>
+            <li><a href="#/impressum"> {{ 'LEGAL_NOTICE_TITLE' | translate }} </a></li>
+            <li>Design: Based on <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/jquery.scrollgress.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<!--[if lte IE 8]>
+<script src="assets/js/ie/respond.min.js"></script><![endif]-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+<script src="assets/js/ngDialog.min.js"></script>
+<script src="assets/js/angular-translate.min.js"></script>
+<script src="assets/js/angular-cookies.min.js"></script>
+
+<!--<script src="assets/js/main.js"></script>-->
+
+<script>
+    var app = angular.module('hdmBankingLogin', ['ngDialog', 'ngRoute', 'pascalprecht.translate']);
+
+    app.config(['$routeProvider', function ($routeProvider) {
+        $routeProvider
+            // Home
+                .when("/", {templateUrl: "templates/information.html", controller: "PageCtrl"})
+            // Transfer Form
+                .when("/impressum", {templateUrl: "templates/impressum.html", controller: "PageCtrl"})
+            // 404 Error
+                .otherwise("/404", {templateUrl: "templates/404.html", controller: "PageCtrl"});
+    }]);
+
+    app.config(function ($translateProvider) {
+        $translateProvider.translations('en', {
+            'UNIVERSITY_NAME' : 'Stuttgart Media University',
+            'HOME' : 'Home',
+            'DOCUMENTATION' : 'Documentation',
+            'HEADER_ACCESSIBLE_BANKING' : 'Accessible Banking Demo',
+            'START_DEMO' : 'Start Demo',
+            'LEARN_MORE' : 'Learn More',
+            'HEADER_SPECIAL_LINE_1' : 'An accessible online banking alternative',
+            'HEADER_SPECIAL_LINE_2' : 'suited for users with impairments',
+            'HEADER_PROJECT_SUMMARY_LINE_1' : 'Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc ornare',
+            'HEADER_PROJECT_SUMMARY_LINE_2' : 'adipiscing nunc adipiscing. Condimentum turpis massa.',
+            'PLACEHOLDER_ACCOUNT' : 'Account Number',
+            'PLACEHOLDER_PIN' : 'PIN',
+            'ACTION_CANCEL' : 'Cancel',
+            'ACTION_LOGIN' : 'Log In',
+            'INFO_HEADER_1' : 'EN Magna etiam',
+            'INFO_CONTENT_1' : 'EN Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.',
+            'INFO_HEADER_2' : 'EN Ipsum dolor',
+            'INFO_CONTENT_2' : 'EN Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.',
+            'INFO_HEADER_3' : 'EN Sed feugiat',
+            'INFO_CONTENT_3' : 'EN Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.',
+            'INFO_HEADER_4' : 'EN Enim phasellus',
+            'INFO_CONTENT_4' : 'EN Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.',
+            'LEGAL_NOTICE_TITLE' : 'Legal Notice',
+            'LEGAL_NOTICE_CONTENT' : 'Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.'
+        });
+        $translateProvider.translations('de', {
+            'UNIVERSITY_NAME' : 'Hochschule der Medien',
+            'HOME' : 'Home',
+            'DOCUMENTATION' : 'Dokumentation',
+            'HEADER_ACCESSIBLE_BANKING' : 'Barrieresfreies Banking Demo',
+            'START_DEMO' : 'Demo Starten',
+            'LEARN_MORE' : 'Mehr Info',
+            'HEADER_SPECIAL_LINE_1' : 'Eine barrieresfreie Alternative für',
+            'HEADER_SPECIAL_LINE_2' : 'Benutzer mit Behinderungen.',
+            'HEADER_PROJECT_SUMMARY_LINE_1' : 'Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc ornare',
+            'HEADER_PROJECT_SUMMARY_LINE_2' : 'adipiscing nunc adipiscing. Condimentum turpis massa.',
+            'PLACEHOLDER_ACCOUNT' : 'Kontonummer',
+            'PLACEHOLDER_PIN' : 'PIN Nummer',
+            'ACTION_CANCEL' : 'Abbrechen',
+            'ACTION_LOGIN' : 'Einloggen',
+            'INFO_HEADER_1' : 'De_Magna etiam',
+            'INFO_CONTENT_1' : 'De_Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.',
+            'INFO_HEADER_2' : 'DE Ipsum dolor',
+            'INFO_CONTENT_2' : 'DE Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.',
+            'INFO_HEADER_3' : 'DE Sed feugiat',
+            'INFO_CONTENT_3' : 'DE Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.',
+            'INFO_HEADER_4' : 'DE Enim phasellus',
+            'INFO_CONTENT_4' : 'DE Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.',
+            'LEGAL_NOTICE_TITLE' : 'Impressum',
+            'LEGAL_NOTICE_CONTENT' : 'DE Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.'
+        });
+
+        debugger;
+        $translateProvider.preferredLanguage('en');
+    });
+
+    app.controller('MainCtrl', ['$scope', '$location', 'ngDialog', function ($scope, $location, ngDialog) {
+        $scope.clickToOpen = function () {
+            ngDialog.open({template: 'templates/popupLogin.html', showClose: false});
+        };
+        $scope.go = function (path) {
+            $location.path(path);
+        }
+    }]);
+
+    app.controller('PageCtrl', function (/* $scope, $location, $http */) {
+        console.log("Page Controller reporting for duty.");
+    });
+
+    app.controller('LangCtrl', function ($scope, $translate) {
+        $scope.changeLanguage = function (key) {
+            $translate.use(key);
+        };
+    });
+
+</script>
+
+</body>
+</html>

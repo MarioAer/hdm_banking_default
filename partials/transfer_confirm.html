@@ -1,0 +1,60 @@
+<div class="transfer-end-view">
+    <h2>Überweisung</h2>
+    <h4>Ihr Überweisungsauftrag</h4>
+    <div class="table-wrapper">
+        <table>
+            <tbody>
+            <tr>
+                <td>Empfänger</td>
+                <td>Mustermann, Max</td>
+            </tr>
+            <tr>
+                <td>IBAN</td>
+                <td>DE43 5337 0024 0123 4567 00</td>
+            </tr>
+            <tr>
+                <td>BIC</td>
+                <td>DEUTDEFF533</td>
+            </tr>
+            <tr>
+                <td>Betrag</td>
+                <td>461,42 EUR</td>
+            </tr>
+            <tr>
+                <td>Verwendungszweck</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Auftraggeber</td>
+                <td>Max Mustermann</td>
+            </tr>
+            <tr>
+                <td>Kontonummer Auftraggeber</td>
+                <td>1234567</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <form method="post" action="#">
+        <div class="row uniform 50%">
+            <div class="6u 12u(mobilep)">
+                <span style="line-height:3em;">iTAN</span>
+            </div>
+            <div class="6u 12u(mobilep)">
+                <input type="number" name="tan-number" id="tan-number" value="" placeholder="">
+            </div>
+        </div>
+        <div class="row uniform">
+            <div class="12u">
+                <ul class="actions">
+                    <li>
+                        <input type="submit" value="Überweisen" style="background-color:red;">
+                    </li>
+                    <li>
+                        <input type="reset" value="Abbrechen" class="alt">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,73 @@
+<div class="transfer-view">
+  <h2>Überweisung</h2>
+  <h4>Auftraggeber</h4>
+  <div class="table-wrapper">
+    <table>
+      <tbody>
+        <tr>
+          <td>Name:</td>
+          <td>Mustermann, Max</td>
+        </tr>
+        <tr>
+          <td>Konto:</td>
+          <td>
+            <div class="select-wrapper">
+              <select name="category" id="category" style="text-indent: 6em">
+                <option value="">- Category -</option>
+                <option value="1">Manufacturing</option>
+                <option value="1">Shipping</option>
+                <option value="1">Administration</option>
+                <option value="1">Human Resources</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>IBAN:</td>
+          <td>DE43 5337 0024 0123 4567 00</td>
+        </tr>
+        <tr>
+          <td>Aktueller Kontostand:</td>
+          <td>461,42 EUR</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h4>Zahlungsempfänger</h4>
+  <form method="post" action="#">
+    <div class="row uniform 50%">
+      <div class="12u 12u(mobilep)">
+        <input type="text" name="recipient" id="recipient" value="" placeholder="Name, Vorname / Firma">
+      </div>
+      <div class="12u 12u(mobilep)">
+        <input type="text" name="recipient-account" id="recipient-account" value="" placeholder="Konto-Nr. des Empfängers">
+      </div>
+      <div class="12u 12u(mobilep)">
+        <input type="text" name="recipient-blz" id="recipient-blz" value="" placeholder="Bankleitzahl">
+      </div>
+      <div class="6u 12u(mobilep)">
+        <input type="number" name="ammount" id="ammount" value="" placeholder="Betrag (EUR, Ct.)">
+      </div>
+      <div class="6u 12u(mobilep)">
+        <input type="date" name="date" id="date" value="" placeholder="Termin">
+      </div>
+      <div class="12u 12u(mobilep)">
+        <input type="text" name="transfer-motive" id="transfer-motive" value="Verwendungszweck" placeholder="Bankleitzahl">
+      </div>
+    </div>
+
+
+    <div class="row uniform">
+      <div class="12u">
+        <ul class="actions">
+          <li>
+            <input type="submit" value="Weiter" style="background-color:red;">
+          </li>
+          <li>
+            <input type="reset" value="Reset" class="alt">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </form>
+</div>
