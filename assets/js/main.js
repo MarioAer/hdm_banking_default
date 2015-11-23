@@ -103,7 +103,8 @@
 // some content
 var app = angular.module('hdmBankingApp', [
     'ngRoute',
-	'pascalprecht.translate'
+	'pascalprecht.translate',
+    'ngCookies'
 ]);
 
 app.config(['$routeProvider', function ($routeProvider) {
@@ -128,12 +129,6 @@ app.controller('PageCtrl', function ( $scope, $location, $http) {
     console.log("Page Controller reporting for duty.");
 });
 
-app.controller('bankMainCtrl', function($scope, $location){
-    $scope.isActive = function (path) {
-        return path === $location.path();
-    };
-});
-
 app.config(function ($translateProvider) {
 	$translateProvider.translations('en', {
 		'UNIVERSITY_NAME' : 'Stuttgart Media University',
@@ -148,14 +143,43 @@ app.config(function ($translateProvider) {
         'LAST_LOGIN' : 'Last login :',
         'LEGAL_NOTICE_TITLE' : 'Legal Notice',
 		'LEGAL_NOTICE_CONTENT' : 'Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.',
+    // Overview
+        'OVERVIEW_BANK_SERVICE':'Bank Service',
+        'OVERVIEW_SALDO':'Saldo',
+        'OVERVIEW_SALDO':'Currency',
+        'OVERVIEW_NORMAL_ACCOUNT':'Personal Account',
+        'OVERVIEW_SAVINGS_ACCOUNT':'Savings Account',
+        'OVERVIEW_CREDIT_CARD':'Credit Card',
+    // Transactions
+        'ACCOUNT_DETAILS':'Account Overview',
+        'ACCOUNT_CASH':'Cash',
+        'ACCOUNT_DEBT':'Debt',
+        'ACCOUNT_CURRENCY':'Currency',
      //  Logout
         'LOGOUT_MESSAGE_1' : 'Thank you for your visit',
         'LOGOUT_MESSAGE_2' : 'You Logout successfully',
-     // Overview
-        '' : '',
-        '' : '',
-        '' : '',
-        '' : ''
+     // Transfer
+        'TRANSFER_OWNER':'Transfer Owner',
+        'NAME' : 'Name',
+        'ACCOUNT' : 'Account',
+        'IBAN' : 'IBAN',
+        'CURRENT_ACCOUNT_AMMOUNT' : 'Current Account',
+        'RECIPIENT' : 'Recipient',
+        'FORM_NAME' : 'Name, Lastname / Company',
+        'FORM_ACCOUNT_NUMBER' : 'Account Number',
+        'FORM_BLZ' : 'Bank Code',
+        'FORM_AMMOUNT' : 'Ammount (EUR, Ct.)',
+        'FORM_DATE' : '',
+        'FORM_REASON' : 'Transaction Description (Optional)',
+        'BUTTON_NEXT' : 'Next',
+        'BUTTON_RESET' : 'Reset',
+    // Account Control
+        'ACCONTROL_DESC' : 'Here kann you manage your account settings.',
+        'ACCONTROL_NORMAL_ACCOUNT' : 'Personal Account',
+        'ACCONTROL_SAVINGS_ACCOUNT' : 'Savings Account',
+        'ACCONTROL_BLOCKED' : 'Blocked',
+        'ACCONTROL_UNBLOCKED' : 'Unblocked',
+        'ACCONTROL_BTN_CONFIRM' : 'Save'
 	});
 	$translateProvider.translations('de', {
         'UNIVERSITY_NAME' : 'Hochschule der Medien',
@@ -169,10 +193,59 @@ app.config(function ($translateProvider) {
 		'NAV_ACCOUNT_CONTROL' : 'Konto Verwaltung',
         'LAST_LOGIN' : 'Letztes Einloggen :',
         'LEGAL_NOTICE_TITLE' : 'Impressum',
-        'LEGAL_NOTICE_CONTENT' : 'Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.'
-
+        'LEGAL_NOTICE_CONTENT' : 'Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.',
+        // Overview
+        'OVERVIEW_BANK_SERVICE':'Bankleistungen',
+        'OVERVIEW_SALDO':'Saldo',
+        'OVERVIEW_CURRENCY':'Währung',
+        'OVERVIEW_NORMAL_ACCOUNT':'Persönliches Konto',
+        'OVERVIEW_SAVINGS_ACCOUNT':'Sparkonto',
+        'OVERVIEW_CREDIT_CARD':'Kreditkarte',
+        // Transactions
+        'ACCOUNT_DETAILS':'Umsatzdetails',
+        'ACCOUNT_CASH':'Soll',
+        'ACCOUNT_DEBT':'Haben',
+        'ACCOUNT_CURRENCY':'Währung',
+        //  Logout
+        'LOGOUT_MESSAGE_1' : 'Vielen Dank für Ihren Besuch',
+        'LOGOUT_MESSAGE_2' : 'Sie wurden erfolgreich ausgeloggt.',
+        // Transfer
+        'TRANSFER_OWNER':'Auftraggeber',
+        'NAME' : 'Name',
+        'ACCOUNT' : 'Konto',
+        'IBAN' : 'IBAN',
+        'CURRENT_ACCOUNT_AMMOUNT' : 'Aktueller Kontostand:',
+        'RECIPIENT' : 'Empfänger',
+        'FORM_NAME' : 'Name, Vorname / Firma',
+        'FORM_ACCOUNT_NUMBER' : 'Konto Nr. des Empfängers',
+        'FORM_BLZ' : 'Bankleitzahl',
+        'FORM_AMMOUNT' : 'Betrag (EUR, Ct.)',
+        'FORM_DATE' : '',
+        'FORM_REASON' : 'Verwendungszweck',
+        'BUTTON_NEXT' : 'Weiter',
+        'BUTTON_RESET' : 'Abbrechen',
+        // Account Control
+        'ACCONTROL_DESC' : 'Hier können Sie verschiedene Aspekte Ihres Kontos verwalten.',
+        'ACCONTROL_NORMAL_ACCOUNT' : 'Persönliches Konto',
+        'ACCONTROL_SAVINGS_ACCOUNT' : 'Sparkonto',
+        'ACCONTROL_BLOCKED' : 'Gesperrt',
+        'ACCONTROL_UNBLOCKED' : 'Entsperrt',
+        'ACCONTROL_BTN_CONFIRM' : 'Speichern'
     });
 
 	$translateProvider.preferredLanguage('en');
     $translateProvider.useSanitizeValueStrategy('escape');
+});
+
+app.controller('bankMainCtrl', function($scope, $location, $cookies, $translate){
+    $scope.isActive = function (path) {
+        return path === $location.path();
+    };
+    angular.element(document).ready(function () {
+        var prefLangKey = $cookies.get('HdMBankLang');
+        if (prefLangKey != null) {
+            $translate.use(prefLangKey);
+        }
+    });
+
 });

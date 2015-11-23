@@ -1,13 +1,13 @@
 <div class="acccontrol-view">
-    <h2>Account Control</h2>
-    <p>Hier können Sie verschiedene Aspekte Ihres Kontos verwalten.</p>
+    <h2>{{ 'NAV_ACCOUNT_CONTROL' | translate }}</h2>
+    <p>{{ 'ACCONTROL_DESC' | translate }}</p>
     <form method="post" action="#">
         <div class="row uniform 50%">
             <div class="12u">
                 <div class="select-wrapper">
                     <select name="account" id="account">
-                        <option value="1">Current Account</option>
-                        <option value="2">Saving Account</option>
+                        <option value="1">{{ 'ACCONTROL_NORMAL_ACCOUNT' | translate }}</option>
+                        <option value="2">{{ 'ACCONTROL_SAVINGS_ACCOUNT' | translate }}</option>
                     </select>
                 </div>
             </div>
@@ -15,18 +15,17 @@
         <div class="row uniform 50%">
             <div class="4u 12u(narrower)">
                 <input type="radio" id="blocked" name="acc-security">
-                <label for="blocked">Blocked</label>
+                <label for="blocked">{{ 'ACCONTROL_BLOCKED' | translate }}</label>
             </div>
             <div class="4u 12u(narrower)">
                 <input type="radio" id="active" name="acc-security" checked="">
-                <label for="active">Unblocked</label>
+                <label for="active">{{ 'ACCONTROL_UNBLOCKED' | translate }}</label>
             </div>
         </div>
         <div class="row uniform">
             <div class="12u">
                 <ul class="actions">
-                    <li><input type="submit" value="Send Message"></li>
-                    <li><input type="reset" value="Reset" class="alt"></li>
+                    <li><input type="submit" value="{{ 'ACCONTROL_BTN_CONFIRM' | translate }}"></li>
                 </ul>
             </div>
         </div>

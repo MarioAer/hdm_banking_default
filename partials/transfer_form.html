@@ -1,15 +1,15 @@
 <div class="transfer-view">
-  <h2>Überweisung</h2>
+  <h2>{{ 'NAV_TRANSFER' | translate }}</h2>
   <h4>Auftraggeber</h4>
   <div class="table-wrapper">
     <table>
       <tbody>
         <tr>
-          <td>Name:</td>
+          <td>{{ 'NAME' | translate }}</td>
           <td>Mustermann, Max</td>
         </tr>
         <tr>
-          <td>Konto:</td>
+          <td>{{ 'ACCOUNT' | translate }}</td>
           <td>
             <div class="select-wrapper">
               <select name="category" id="category" style="text-indent: 6em">
@@ -23,36 +23,36 @@
           </td>
         </tr>
         <tr>
-          <td>IBAN:</td>
+          <td>{{ 'IBAN' | translate }}</td>
           <td>DE43 5337 0024 0123 4567 00</td>
         </tr>
         <tr>
-          <td>Aktueller Kontostand:</td>
+          <td>{{ 'CURRENT_ACCOUNT_AMMOUNT' | translate }}</td>
           <td>461,42 EUR</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <h4>Zahlungsempfänger</h4>
+  <h4>{{ 'RECIPIENT' | translate }}</h4>
   <form method="post" action="#">
     <div class="row uniform 50%">
       <div class="12u 12u(mobilep)">
-        <input type="text" name="recipient" id="recipient" value="" placeholder="Name, Vorname / Firma">
+        <input type="text" name="recipient" id="recipient" value="" placeholder="{{ 'FORM_NAME' | translate }}">
       </div>
       <div class="12u 12u(mobilep)">
-        <input type="text" name="recipient-account" id="recipient-account" value="" placeholder="Konto-Nr. des Empfängers">
+        <input type="text" name="recipient-account" id="recipient-account" value="" placeholder="{{ 'FORM_ACCOUNT_NUMBER' | translate }}">
       </div>
       <div class="12u 12u(mobilep)">
-        <input type="text" name="recipient-blz" id="recipient-blz" value="" placeholder="Bankleitzahl">
+        <input type="text" name="recipient-blz" id="recipient-blz" value="" placeholder="{{ 'FORM_BLZ' | translate }}">
       </div>
       <div class="6u 12u(mobilep)">
-        <input type="number" name="ammount" id="ammount" value="" placeholder="Betrag (EUR, Ct.)">
+        <input type="number" name="ammount" id="ammount" value="" placeholder="{{ 'FORM_AMMOUNT' | translate }}">
       </div>
       <div class="6u 12u(mobilep)">
         <input type="date" name="date" id="date" value="" placeholder="Termin">
       </div>
       <div class="12u 12u(mobilep)">
-        <input type="text" name="transfer-motive" id="transfer-motive" value="Verwendungszweck" placeholder="Bankleitzahl">
+        <input type="text" name="transfer-motive" id="transfer-motive" value="{{ 'FORM_REASON' | translate }}">
       </div>
     </div>
 
@@ -61,10 +61,10 @@
       <div class="12u">
         <ul class="actions">
           <li>
-            <input type="submit" value="Weiter" style="background-color:red;">
+            <input type="submit" value="{{ 'BUTTON_NEXT' | translate }}" style="background-color:red;">
           </li>
           <li>
-            <input type="reset" value="Reset" class="alt">
+            <input type="reset" value="{{ 'BUTTON_RESET' | translate }}" class="alt">
           </li>
         </ul>
       </div>
