@@ -9,25 +9,58 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
+    <style>
+        .log-out-btn{
+            background-color: red;
+            padding: 0.6em 1.5em;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            border: none;
+            font-weight: bold;
+        }
+        .log-out-btn:hover{
+            background-color: #737373;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .bank-nav li:hover {
+            background-color: #e5e5e5;
+            cursor: pointer;
+        }
+        .bank-nav a {
+            border: none;
+            color: red;
+            padding: 0.4em 2em;
+            font-weight: 500;
+        }
+        .bank-nav a.active {
+            color: #737373;
+        }
+        ul.alt li:first-child {
+            padding-top: 0.5em;
+        }
+    </style>
+
 </head>
 
 <body ng-app="hdmBankingApp">
-	<div id="page-wrapper">
+	<div id="page-wrapper" ng-controller="bankMainCtrl">
 
 		<!-- Header -->
 		<nav ng-include='"templates/header.html"'></nav>
 
-
 		<!--Main-->
 		<section id="main" class="container" style="padding: 2em 0">
 
-			<section class="box" style="padding: 1em;">
+			<section ng-class="{hidden:isActive('/logout')}" class="box" style="padding: 1em;">
 				<div class="row">
 					<div class="4u 12u(mobilep)">
 						<span>{{ 'WELCOME' | translate }} Marius!</span>
 					</div>
 					<div class="8u 12u(mobilep)" style="text-align: right">
-						<a href="#/">{{ 'LOGOUT' | translate }}</a>
+						<a class="log-out-btn" href="#/logout">{{ 'LOGOUT' | translate }}</a>
 					</div>
 				</div>
 			</section>
@@ -35,11 +68,12 @@
 			<section id="features" class="box special features">
 				<div class="row">
 
-					<div class="4u 12u(mobilep)">
+					<div class="4u 12u(mobilep) bank-nav" ng-class="{hidden:isActive('/logout')}">
 						<ul class="alt">
-							<li><a href="#/">{{ 'NAV_OVERVIEW' | translate }}</a></li>
-							<li><a href="#/transactions">{{ 'NAV_AMOUNTS' | translate }}</a></li>
-							<li><a href="#/form">{{ 'NAV_TRANSFER' | translate }}</a></li>
+							<li><a ng-class="{active:isActive('/')}" href="#/">{{ 'NAV_OVERVIEW' | translate }}</a></li>
+							<li><a ng-class="{active:isActive('/transactions')}" href="#/transactions">{{ 'NAV_AMOUNTS' | translate }}</a></li>
+							<li><a ng-class="{active:isActive('/form')}" href="#/form">{{ 'NAV_TRANSFER' | translate }}</a></li>
+							<li><a ng-class="{active:isActive('/accontrol')}" href="#/accontrol">{{ 'NAV_ACCOUNT_CONTROL' | translate }}</a></li>
 						</ul>
 						<span style="text-align:center">{{ 'LAST_LOGIN' | translate }} <br>04/06/2015 um 14:34</span>
 					</div>
@@ -59,7 +93,7 @@
 			<ul class="icons">
 				<li>
 					<a href="#" class="icon">
-						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Hochschule_der_Medien_Stuttgart_logo.svg/2000px-Hochschule_der_Medien_Stuttgart_logo.svg.png" height="50px"/>
+						<img src="images/hdm_logo.png" height="50px"/>
 						<span class="label">Twitter</span>
 					</a>
 				</li>
@@ -83,8 +117,8 @@
 	<script src="assets/js/skel.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+	<script src="assets/js/angular.min.js"></script>
+	<script src="assets/js/angular-route.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/angular-translate.min.js"></script>
 	<script src="assets/js/angular-cookies.min.js"></script>

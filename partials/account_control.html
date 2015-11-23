@@ -1,0 +1,35 @@
+<div class="acccontrol-view">
+    <h2>Account Control</h2>
+    <p>Hier können Sie verschiedene Aspekte Ihres Kontos verwalten.</p>
+    <form method="post" action="#">
+        <div class="row uniform 50%">
+            <div class="12u">
+                <div class="select-wrapper">
+                    <select name="account" id="account">
+                        <option value="1">Current Account</option>
+                        <option value="2">Saving Account</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row uniform 50%">
+            <div class="4u 12u(narrower)">
+                <input type="radio" id="blocked" name="acc-security">
+                <label for="blocked">Blocked</label>
+            </div>
+            <div class="4u 12u(narrower)">
+                <input type="radio" id="active" name="acc-security" checked="">
+                <label for="active">Unblocked</label>
+            </div>
+        </div>
+        <div class="row uniform">
+            <div class="12u">
+                <ul class="actions">
+                    <li><input type="submit" value="Send Message"></li>
+                    <li><input type="reset" value="Reset" class="alt"></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+
+</div>

@@ -116,12 +116,22 @@ app.config(['$routeProvider', function ($routeProvider) {
 	.when("/confirm", {templateUrl: "partials/transfer_confirm.html", controller: "PageCtrl"})
 	// Transactions
 	.when("/transactions", {templateUrl: "partials/transactions.html", controller: "PageCtrl"})
+    // Account Settings
+    .when("/accontrol", {templateUrl: "partials/account_control.html", controller: "PageCtrl"})
+    // Logout
+    .when("/logout", {templateUrl: "partials/logout.html", controller: "PageCtrl"})
 	// Pages
-	.otherwise("/404", {templateUrl: "partials/404.html", controller: "PageCtrl"});
+    .otherwise({redirectTo: '/'});
 }]);
 
-app.controller('PageCtrl', function (/* $scope, $location, $http */) {
-	console.log("Page Controller reporting for duty.");
+app.controller('PageCtrl', function ( $scope, $location, $http) {
+    console.log("Page Controller reporting for duty.");
+});
+
+app.controller('bankMainCtrl', function($scope, $location){
+    $scope.isActive = function (path) {
+        return path === $location.path();
+    };
 });
 
 app.config(function ($translateProvider) {
@@ -134,6 +144,7 @@ app.config(function ($translateProvider) {
         'NAV_OVERVIEW' : 'Overview',
         'NAV_AMOUNTS' : 'Amounts',
         'NAV_TRANSFER' : 'Money Transfer',
+        'NAV_ACCOUNT_CONTROL' : 'Account Settings',
         'LAST_LOGIN' : 'Last login :',
         'LEGAL_NOTICE_TITLE' : 'Legal Notice',
 		'LEGAL_NOTICE_CONTENT' : 'Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.',
@@ -155,12 +166,13 @@ app.config(function ($translateProvider) {
         'NAV_OVERVIEW' : 'Übersicht',
         'NAV_AMOUNTS' : 'Umsätze',
         'NAV_TRANSFER' : 'Überweisung',
+		'NAV_ACCOUNT_CONTROL' : 'Konto Verwaltung',
         'LAST_LOGIN' : 'Letztes Einloggen :',
         'LEGAL_NOTICE_TITLE' : 'Impressum',
         'LEGAL_NOTICE_CONTENT' : 'Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.'
 
     });
 
-	debugger;
 	$translateProvider.preferredLanguage('en');
+    $translateProvider.useSanitizeValueStrategy('escape');
 });
