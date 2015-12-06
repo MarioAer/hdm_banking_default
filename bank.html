@@ -22,7 +22,7 @@
         .log-out-btn:hover{
             background-color: #737373;
         }
-        .hidden {
+        #navButton, #navPanel, .hidden {
             display: none !important;
         }
         .bank-nav li:hover {
@@ -41,6 +41,9 @@
         ul.alt li:first-child {
             padding-top: 0.5em;
         }
+		.btn-spacing {
+			padding-bottom: 15px;
+		}
     </style>
 
 </head>
@@ -49,10 +52,10 @@
 	<div id="page-wrapper" ng-controller="bankMainCtrl">
 
 		<!-- Header -->
-		<nav ng-include='"templates/header.html"'></nav>
+		<nav ng-include='"templates/header.html"' role="navigation"></nav>
 
 		<!--Main-->
-		<section id="main" class="container" style="padding: 2em 0">
+		<section id="main" role="main" class="container" style="padding: 2em 0">
 
 			<section ng-class="{hidden:isActive('/logout')}" class="box" style="padding: 1em;">
 				<div class="row">
@@ -72,8 +75,8 @@
 						<ul class="alt">
 							<li><a ng-class="{active:isActive('/')}" href="#/">{{ 'NAV_OVERVIEW' | translate }}</a></li>
 							<li><a ng-class="{active:isActive('/transactions')}" href="#/transactions">{{ 'NAV_AMOUNTS' | translate }}</a></li>
-							<li><a ng-class="{active:isActive('/form')}" href="#/form">{{ 'NAV_TRANSFER' | translate }}</a></li>
-							<li><a ng-class="{active:isActive('/accontrol')}" href="#/accontrol">{{ 'NAV_ACCOUNT_CONTROL' | translate }}</a></li>
+							<li><a ng-class="{active:isActive('/newTransaction')}" href="#/newTransaction">{{ 'NAV_TRANSFER' | translate }}</a></li>
+							<li><a ng-class="{active:isActive('/accontrol')}" ng-click="" href="#/accontrol">{{ 'NAV_ACCOUNT_CONTROL' | translate }}</a></li>
 						</ul>
 					</div>
 
@@ -88,7 +91,7 @@
 		</section>
 
 		<!-- Footer -->
-		<footer id="footer">
+		<footer id="footer" role="footer">
 			<ul class="icons">
 				<li>
 					<a href="#" class="icon">
@@ -117,6 +120,7 @@
 	<script src="assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 	<script src="assets/js/angular.min.js"></script>
+	<script src="assets/js/angular-aria.js"></script>
 	<script src="assets/js/angular-route.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/angular-translate.min.js"></script>

@@ -9,15 +9,12 @@
           <td>Mustermann, Max</td>
         </tr>
         <tr>
-          <td>{{ 'ACCOUNT' | translate }}</td>
+          <td><label for="acc_type">{{ 'ACCOUNT' | translate }}</label></td>
           <td>
             <div class="select-wrapper">
-              <select name="category" id="category" style="text-indent: 6em">
-                <option value="">- Category -</option>
-                <option value="1">Manufacturing</option>
-                <option value="1">Shipping</option>
-                <option value="1">Administration</option>
-                <option value="1">Human Resources</option>
+              <select name="category" id="acc_type" style="text-indent: 6em" autofocus>
+                <option value="{{ 'ACCOUNT_A' | translate }}">{{ 'ACCOUNT_A' | translate }}</option>
+                <option value="{{ 'ACCOUNT_B' | translate }}">{{ 'ACCOUNT_B' | translate }}</option>
               </select>
             </div>
           </td>
@@ -37,36 +34,42 @@
   <form method="post" action="#">
     <div class="row uniform 50%">
       <div class="12u 12u(mobilep)">
-        <input type="text" name="recipient" id="recipient" value="" placeholder="{{ 'FORM_NAME' | translate }}">
+        <label for="recipient">{{ 'FORM_NAME' | translate }}</label>
+        <input type="text" name="recipient" id="recipient" value="">
       </div>
       <div class="12u 12u(mobilep)">
+        <label for="recipient">{{ 'FORM_ACCOUNT_NUMBER' | translate }}</label>
         <input type="text" name="recipient-account" id="recipient-account" value="" placeholder="{{ 'FORM_ACCOUNT_NUMBER' | translate }}">
       </div>
       <div class="12u 12u(mobilep)">
+        <label for="recipient">{{ 'FORM_BLZ' | translate }}</label>
         <input type="text" name="recipient-blz" id="recipient-blz" value="" placeholder="{{ 'FORM_BLZ' | translate }}">
       </div>
       <div class="6u 12u(mobilep)">
+        <label for="recipient">{{ 'FORM_AMMOUNT' | translate }}</label>
         <input type="number" name="ammount" id="ammount" value="" placeholder="{{ 'FORM_AMMOUNT' | translate }}">
       </div>
       <div class="6u 12u(mobilep)">
+        <label for="recipient">{{ 'FORM_NAME' | translate }}</label>
         <input type="date" name="date" id="date" value="" placeholder="Termin">
       </div>
       <div class="12u 12u(mobilep)">
-        <input type="text" name="transfer-motive" id="transfer-motive" value="{{ 'FORM_REASON' | translate }}">
+        <label for="recipient">{{ 'FORM_REASON' | translate }}</label>
+        <input type="text" name="transfer-motive" id="transfer-motive">
       </div>
     </div>
 
 
     <div class="row uniform">
       <div class="12u">
-        <ul class="actions">
-          <li>
-            <input type="submit" value="{{ 'BUTTON_NEXT' | translate }}" style="background-color:red;">
-          </li>
-          <li>
+        <div class="actions">
+          <div class="btn-spacing">
+            <input type="button" ng-click="go('/confirm')"  value="{{ 'BUTTON_NEXT' | translate }}" style="background-color:red;">
+          </div>
+          <div>
             <input type="reset" value="{{ 'BUTTON_RESET' | translate }}" class="alt">
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </div>
   </form>

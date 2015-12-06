@@ -5,7 +5,8 @@
         <div class="row uniform 50%">
             <div class="12u">
                 <div class="select-wrapper">
-                    <select name="account" id="account">
+                    <label for="accountControl">{{ 'ACCOUNT_CONTROL_LABEL' | translate }}</label>
+                    <select name="account" id="accountControl">
                         <option value="1">{{ 'ACCONTROL_NORMAL_ACCOUNT' | translate }}</option>
                         <option value="2">{{ 'ACCONTROL_SAVINGS_ACCOUNT' | translate }}</option>
                     </select>
@@ -24,9 +25,9 @@
         </div>
         <div class="row uniform">
             <div class="12u">
-                <ul class="actions">
-                    <li><input type="submit" value="{{ 'ACCONTROL_BTN_CONFIRM' | translate }}"></li>
-                </ul>
+                <div class="actions">
+                    <div><input type="submit" value="{{ 'ACCONTROL_BTN_CONFIRM' | translate }}"></div>
+                </div>
             </div>
         </div>
     </form>

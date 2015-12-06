@@ -46,14 +46,14 @@
         </div>
         <div class="row uniform">
             <div class="12u">
-                <ul class="actions">
-                    <li>
-                        <input type="submit" value="Überweisen" style="background-color:red;">
-                    </li>
-                    <li>
-                        <input type="reset" value="Abbrechen" class="alt">
-                    </li>
-                </ul>
+                <div class="actions">
+                    <div class="btn-spacing">
+                        <input type="button" id="transConfirmBtn" ng-click="go('/finish')" value="{{ 'TRANSFER_ACTION_BTN' | translate }}" style="background-color:red;">
+                    </div>
+                    <div>
+                        <input type="reset" value="{{ 'CANCEL_BTN' | translate}}" class="alt">
+                    </div>
+                </div>
             </div>
         </div>
     </form>

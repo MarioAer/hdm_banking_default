@@ -1,19 +1,22 @@
-
+    <form name="loginform" ng-submit="loginform.$valid && changePage('./bank.html')">
         <div class="row uniform 50%">
             <div class="12u">
-                <input type="text" name="subject" id="name" value="" placeholder="{{ 'PLACEHOLDER_ACCOUNT' | translate }}" />
+                <label for="logInName">{{ 'PLACEHOLDER_ACCOUNT' | translate }}</label>
+                <input type="text" ng-required="true" name="subject" id="logInName" value="" placeholder="" />
             </div>
         </div>
         <div class="row uniform 50%">
             <div class="12u">
-                <input type="password" name="subject" id="password" value="" placeholder="{{ 'PLACEHOLDER_PIN' | translate }}" />
+                <label for="password">{{ 'PLACEHOLDER_PIN' | translate }}</label>
+                <input type="password" ng-required="true" name="subject" id="password" value="" />
             </div>
         </div>
         <div class="row uniform">
             <div class="12u">
-                <ul class="actions align-center">
-                    <li><a class="access-btn" href="bank.html">{{ 'ACTION_LOGIN' | translate }}</a></li>
-                    <li><input type="button" ng-click="closeThisDialog()" value="{{ 'ACTION_CANCEL' | translate }}"/></li>
-                </ul>
+                <div class="actions align-center" >
+                    <div class="btn-spacing"><input type="submit" class="access-btn" value="{{ 'ACTION_LOGIN' | translate }}"></div>
+                    <div><input type="button" ng-click="closeThisDialog()" value="{{ 'ACTION_CANCEL' | translate }}"/></div>
+                </div>
             </div>
         </div>
+    </form>

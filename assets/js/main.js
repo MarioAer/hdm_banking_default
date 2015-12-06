@@ -104,17 +104,22 @@
 var app = angular.module('hdmBankingApp', [
     'ngRoute',
 	'pascalprecht.translate',
-    'ngCookies'
+    'ngCookies',
+    'ngAria'
 ]);
 
 app.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider
 	// Home
 	.when("/", {templateUrl: "partials/overview.html", controller: "PageCtrl"})
+     // Transfer Start
+	.when("/newTransaction", {templateUrl: "partials/transfer_start.html", controller: "PageCtrl"})
 	// Transfer Form
 	.when("/form", {templateUrl: "partials/transfer_form.html", controller: "PageCtrl"})
 	// Transfer Confirm
 	.when("/confirm", {templateUrl: "partials/transfer_confirm.html", controller: "PageCtrl"})
+	// Transfer sucess
+	.when("/finish", {templateUrl: "partials/transfer_finish.html", controller: "PageCtrl"})
 	// Transactions
 	.when("/transactions", {templateUrl: "partials/transactions.html", controller: "PageCtrl"})
     // Account Settings
@@ -126,7 +131,10 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 app.controller('PageCtrl', function ( $scope, $location, $http) {
-    console.log("Page Controller reporting for duty.");
+    angular.element( document.querySelector( '#transStart') ).focus();
+    angular.element( document.querySelector( '#acc_type') ).focus();
+    angular.element( document.querySelector( '#transConfirmBtn') ).focus();
+    angular.element( document.querySelector( '#transConfirmBtn') ).focus();
 });
 
 app.config(function ($translateProvider) {
@@ -159,7 +167,12 @@ app.config(function ($translateProvider) {
         'LOGOUT_MESSAGE_1' : 'Thank you for your visit',
         'LOGOUT_MESSAGE_2' : 'You Logout successfully',
      // Transfer
+        'ACCOUNT_A':'Account A',
+        'ACCOUNT_B':'Account B',
         'TRANSFER_OWNER':'Transfer Owner',
+        'START_TRANSFER_TXT':'Start a new money transfer',
+        'TRANS_START_BTN':'Start a new money Transfer',
+        'END_TRANSFER_TXT':'Thank You, your transaction will be processed by our systems.',
         'NAME' : 'Name',
         'ACCOUNT' : 'Account',
         'IBAN' : 'IBAN',
@@ -173,13 +186,16 @@ app.config(function ($translateProvider) {
         'FORM_REASON' : 'Transaction Description (Optional)',
         'BUTTON_NEXT' : 'Next',
         'BUTTON_RESET' : 'Reset',
-    // Account Control
+        'TRANSFER_ACTION_BTN' : 'Transfer Money',
+        'CANCEL_BTN' : 'Cancel',
+        // Account Control
         'ACCONTROL_DESC' : 'Here kann you manage your account settings.',
+        'ACCOUNT_CONTROL_LABEL' : 'Account Control',
         'ACCONTROL_NORMAL_ACCOUNT' : 'Personal Account',
         'ACCONTROL_SAVINGS_ACCOUNT' : 'Savings Account',
         'ACCONTROL_BLOCKED' : 'Blocked',
         'ACCONTROL_UNBLOCKED' : 'Unblocked',
-        'ACCONTROL_BTN_CONFIRM' : 'Save'
+        'ACCONTROL_BTN_CONFIRM' : 'Confirm'
 	});
 	$translateProvider.translations('de', {
         'UNIVERSITY_NAME' : 'Hochschule der Medien',
@@ -210,7 +226,12 @@ app.config(function ($translateProvider) {
         'LOGOUT_MESSAGE_1' : 'Vielen Dank für Ihren Besuch',
         'LOGOUT_MESSAGE_2' : 'Sie wurden erfolgreich ausgeloggt.',
         // Transfer
+        'ACCOUNT_A':'Girokonto',
+        'ACCOUNT_B':'Sparkonto',
         'TRANSFER_OWNER':'Auftraggeber',
+        'START_TRANSFER_TXT':'Überweisung tätigen',
+        'TRANS_START_BTN':'Überweisung starten',
+        'END_TRANSFER_TXT':'Vielen Dank, Ihre Überweisung wird jetzt bei System verarbeitet.',
         'NAME' : 'Name',
         'ACCOUNT' : 'Konto',
         'IBAN' : 'IBAN',
@@ -223,14 +244,17 @@ app.config(function ($translateProvider) {
         'FORM_DATE' : '',
         'FORM_REASON' : 'Verwendungszweck',
         'BUTTON_NEXT' : 'Weiter',
-        'BUTTON_RESET' : 'Abbrechen',
+        'BUTTON_RESET' : 'Reset',
+        'TRANSFER_ACTION_BTN' : 'Überweisen',
+        'CANCEL_BTN' : 'Abbrechen',
         // Account Control
         'ACCONTROL_DESC' : 'Hier können Sie verschiedene Aspekte Ihres Kontos verwalten.',
+        'ACCOUNT_CONTROL_LABEL' : 'Kontoverwaltung',
         'ACCONTROL_NORMAL_ACCOUNT' : 'Persönliches Konto',
         'ACCONTROL_SAVINGS_ACCOUNT' : 'Sparkonto',
         'ACCONTROL_BLOCKED' : 'Gesperrt',
         'ACCONTROL_UNBLOCKED' : 'Entsperrt',
-        'ACCONTROL_BTN_CONFIRM' : 'Speichern'
+        'ACCONTROL_BTN_CONFIRM' : 'Bestätigen'
     });
 
 	$translateProvider.preferredLanguage('en');
@@ -247,5 +271,7 @@ app.controller('bankMainCtrl', function($scope, $location, $cookies, $translate)
             $translate.use(prefLangKey);
         }
     });
-
+    $scope.go = function (path) {
+        $location.path(path);
+    }
 });
