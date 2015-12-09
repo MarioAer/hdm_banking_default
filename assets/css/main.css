@@ -3096,7 +3096,7 @@ body.landing #page-wrapper {
 #banner input[type="button"].special,
 #banner .button.special {
     background: #fff;
-    color: #666 !important;
+    color: #000 !important;
 }
 
 /* Main */
