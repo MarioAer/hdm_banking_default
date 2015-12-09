@@ -81,27 +81,27 @@
 
         <section id="languages" class="box special features" ng-controller="LangCtrl">
             <ul class="actions">
-                <li><a ng-click="changeLanguage('en')" class="button">EN</a></li>
-                <li><a ng-click="changeLanguage('de')" class="button">DE</a></li>
+                <li><a ng-click="changeLanguage('en')" class="button" lang="en">Englisch</a></li>
+                <li><a ng-click="changeLanguage('de')" class="button" lang="de">Deutsch</a></li>
             </ul>
         </section>
 
     </section>
 
     <!-- Footer -->
-    <footer id="footer" role="footer">
+    <footer id="footer">
         <ul class="icons">
             <li>
-                <a href="#" class="icon">
-                    <img src="images/hdm_logo.png" height="30px"/>
-                    <span class="label">Twitter</span>
+                <a href="https://www.hdm-stuttgart.de/" class="icon">
+                    <img src="images/hdm_logo.png" alt="Hochschule der Medien" height="30px" />
+                    <!--span class="label">Twitter</span-->
                 </a>
             </li>
         </ul>
         <ul class="copyright">
-            <li>HdM Stuttgart. REMEX.</li>
+            <li>Copyright 2012-2016 <abbr title="Hochschule der Medien">HdM</abbr> Stuttgart.</li>
             <li><a href="#/impressum"> {{ 'LEGAL_NOTICE_TITLE' | translate }} </a></li>
-            <li>Design: Based on <a href="http://html5up.net">HTML5 UP</a></li>
+            <li>Design: Based on <a href="http://html5up.net/">HTML5 UP</a> (<a href="http://html5up.net/license"><abbr title="Creative Commons">CC</abbr>-BY 3.0</a>)</li>
         </ul>
     </footer>
 
