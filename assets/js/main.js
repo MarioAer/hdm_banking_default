@@ -154,7 +154,7 @@ app.config(function ($translateProvider) {
     // Overview
         'OVERVIEW_BANK_SERVICE':'Bank Service',
         'OVERVIEW_SALDO':'Account Balance',
-        'OVERVIEW_SALDO':'Currency',
+        'OVERVIEW_CURRENCY':'Currency',
         'OVERVIEW_NORMAL_ACCOUNT':'Checking Account',
         'OVERVIEW_SAVINGS_ACCOUNT':'Savings Account',
         'OVERVIEW_CREDIT_CARD':'Credit Card',
