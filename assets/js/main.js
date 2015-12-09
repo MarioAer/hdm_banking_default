@@ -160,9 +160,14 @@ app.config(function ($translateProvider) {
         'OVERVIEW_CREDIT_CARD':'Credit Card',
     // Transactions
         'ACCOUNT_DETAILS':'Account Overview',
-        'ACCOUNT_CASH':'Cash',
-        'ACCOUNT_DEBT':'Debt',
+        'ACCOUNT_CASH':'Deposits',
+        'ACCOUNT_DEBT':'Withdrawals',
         'ACCOUNT_CURRENCY':'Currency',
+        'TRANSACTIONS_CURRENCY-MSG':'Account currency',
+        'TRANSACTIONS_CURRENCY-CUR':'Euro',
+        'TRANSACTIONS_ENTRYDATE':'Entry date',
+        'TRANSACTIONS_VALUEDATE':'Value date',
+        'TRANSACTIONS_DESCRIPTION':'Description',
      //  Logout
         'LOGOUT_MESSAGE_1' : 'Thank you for your visit.',
         'LOGOUT_MESSAGE_2' : 'You have successfully logged out.',
@@ -222,6 +227,11 @@ app.config(function ($translateProvider) {
         'ACCOUNT_CASH':'Soll',
         'ACCOUNT_DEBT':'Haben',
         'ACCOUNT_CURRENCY':'Währung',
+        'TRANSACTIONS_CURRENCY-MSG':'Account currency', //@@todo translate into German
+        'TRANSACTIONS_CURRENCY-CUR':'Euro',
+        'TRANSACTIONS_ENTRYDATE':'Entry date',
+        'TRANSACTIONS_VALUEDATE':'Value date',
+        'TRANSACTIONS_DESCRIPTION':'Beschreibung',
         //  Logout
         'LOGOUT_MESSAGE_1' : 'Vielen Dank für Ihren Besuch',
         'LOGOUT_MESSAGE_2' : 'Sie wurden erfolgreich ausgeloggt.',

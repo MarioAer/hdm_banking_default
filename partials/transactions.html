@@ -1,33 +1,74 @@
 <div class="transactions-view">
     <h2>{{ 'NAV_AMOUNTS' | translate }}</h2>
     <div class="table-wrapper">
+        <p>{{ 'TRANSACTIONS_CURRENCY-MSG' | translate }}: {{ 'TRANSACTIONS_CURRENCY-CUR' | translate }}</p>
         <table class="alt">
             <thead>
             <tr>
-                <th style="text-align:center;">{{ 'ACCOUNT_DETAILS' | translate }}</th>
+                <th style="text-align:center;">{{ 'TRANSACTIONS_ENTRYDATE' | translate }}</th>
+                <th style="text-align:center;">{{ 'TRANSACTIONS_VALUEDATE' | translate }}</th>
+                <!--th style="text-align:center;">{{ 'ACCOUNT_DETAILS' | translate }}</th-->
+                <th style="text-align:center;">{{ 'TRANSACTIONS_DESCRIPTION' | translate }}</th>
                 <th style="text-align:center;">{{ 'ACCOUNT_CASH' | translate }}</th>
                 <th style="text-align:center;">{{ 'ACCOUNT_DEBT' | translate }}</th>
-                <th style="text-align:center;">{{ 'ACCOUNT_CURRENCY' | translate }}</th>
+                <!--th style="text-align:center;">{{ 'ACCOUNT_CURRENCY' | translate }}</th-->
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>Andreas Lieb</td>
-                <td>428,00 EUR</td>
+                <td>1 Dec</td>
+                <td>1 Dec</td>
+                <td>LBV Baden-Württemberg</td>
+                <td>1,750.00</td>
                 <td> </td>
-                <td>EUR</td>
+                <!--td>EUR</td-->
             </tr>
             <tr>
-                <td>Sabiha Meier</td>
+                <td>1 Dec</td>
+                <td>1 Dec</td>
+                <td>Rent (standing order)</td>
                 <td> </td>
-                <td>150,00</td>
-                <td>EUR</td>
+                <td>435.00</td>
+                <!--td>EUR</td-->
+            </tr>
+            <tr>
+                <td>1 Dec</td>
+                <td>1 Dec</td>
+                <td>Credit card payments Nov.</td>
+                <td> </td>
+                <td>189.00</td>
+                <!--td>EUR</td-->
+            </tr>
+            <tr>
+                <td>2 Dec</td>
+                <td>2 Dec</td>
+                <td>GreenPower</td>
+                <td> </td>
+                <td>24.00</td>
+                <!--td>EUR</td-->
+            </tr>
+            <tr>
+                <td>5 Dec</td>
+                <td>5 Dec</td>
+                <td><abbr>ATM</abbr> withdrawal</td>
+                <td> </td>
+                <td>100.00</td>
+                <!--td>EUR</td-->
+            </tr>
+            <tr>
+                <td>10 Dec</td>
+                <td>10 Dec</td>
+                <td>DBahn EC-Card payment</td>
+                <td> </td>
+                <td>45.50</td>
+                <!--td>EUR</td-->
             </tr>
             </tbody>
         </table>
     </div>
 
-    <h4>Ordered</h4>
+    <!-- @@ purpose of this list is not clear, hence commented out -->
+    <!--h4>Ordered</h4>
     <ol>
         <li>Dolor pulvinar etiam magna etiam.</li>
         <li>Etiam vel felis at lorem sed viverra.</li>
@@ -35,5 +76,5 @@
         <li>Dolor pulvinar etiam magna etiam.</li>
         <li>Etiam vel felis at lorem sed viverra.</li>
         <li>Felis enim feugiat dolore viverra.</li>
-    </ol>
+    </ol-->
 </div>
