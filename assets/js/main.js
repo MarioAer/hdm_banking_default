@@ -224,13 +224,13 @@ app.config(function ($translateProvider) {
         'OVERVIEW_CREDIT_CARD':'Kreditkarte',
         // Transactions
         'ACCOUNT_DETAILS':'Umsatzdetails',
-        'ACCOUNT_CASH':'Soll',
-        'ACCOUNT_DEBT':'Haben',
+        'ACCOUNT_CASH':'Forderung',
+        'ACCOUNT_DEBT':'Zahlung',
         'ACCOUNT_CURRENCY':'Währung',
-        'TRANSACTIONS_CURRENCY-MSG':'Account currency', //@@todo translate into German
+        'TRANSACTIONS_CURRENCY-MSG':'Währung',
         'TRANSACTIONS_CURRENCY-CUR':'Euro',
-        'TRANSACTIONS_ENTRYDATE':'Entry date',
-        'TRANSACTIONS_VALUEDATE':'Value date',
+        'TRANSACTIONS_ENTRYDATE':'Datum',
+        'TRANSACTIONS_VALUEDATE':'Buchungsdatum',
         'TRANSACTIONS_DESCRIPTION':'Beschreibung',
         //  Logout
         'LOGOUT_MESSAGE_1' : 'Vielen Dank für Ihren Besuch',
