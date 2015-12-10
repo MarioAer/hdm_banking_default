@@ -2819,7 +2819,7 @@ body.landing #page-wrapper {
 }
 
 #header h1 {
-    color: inherit;
+    color: #fff;
     height: inherit;
     left: 1.25em;
     line-height: inherit;
@@ -3096,7 +3096,7 @@ body.landing #page-wrapper {
 #banner input[type="button"].special,
 #banner .button.special {
     background: #fff;
-    color: #666 !important;
+    color: #000 !important;
 }
 
 /* Main */
