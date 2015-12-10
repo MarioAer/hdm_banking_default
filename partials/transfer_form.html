@@ -12,8 +12,8 @@
           <td><label for="acc_type">{{ 'ACCOUNT' | translate }}</label></td>
           <td>
             <div class="select-wrapper">
-              <select name="category" id="acc_type" style="text-indent: 6em" autofocus>
-                <option value="{{ 'ACCOUNT_A' | translate }}">{{ 'ACCOUNT_A' | translate }}</option>
+              <select ng-model="transfer.fromAccount" name="category" id="acc_type" style="text-indent: 6em" autofocus>
+                <option selected="selected" value="{{ 'ACCOUNT_A' | translate }}">{{ 'ACCOUNT_A' | translate }}</option>
                 <option value="{{ 'ACCOUNT_B' | translate }}">{{ 'ACCOUNT_B' | translate }}</option>
               </select>
             </div>
@@ -31,31 +31,32 @@
     </table>
   </div>
   <h4>{{ 'RECIPIENT' | translate }}</h4>
-  <form method="post" action="#">
+  <form novalidate>
     <div class="row uniform 50%">
       <div class="12u 12u(mobilep)">
         <label for="recipient">{{ 'FORM_NAME' | translate }}</label>
-        <input type="text" name="recipient" id="recipient" value="">
+        <input type="text" ng-model="transfer.recipient" name="recipient" id="recipient" value="">
       </div>
+
       <div class="12u 12u(mobilep)">
         <label for="recipient">{{ 'FORM_ACCOUNT_NUMBER' | translate }}</label>
-        <input type="text" name="recipient-account" id="recipient-account" value="">
+        <input type="text" ng-model="transfer.recipientIBAN" name="recipientIBAN" id="recipient-account" value="">
       </div>
       <div class="12u 12u(mobilep)">
         <label for="recipient">{{ 'FORM_BLZ' | translate }}</label>
-        <input type="text" name="recipient-blz" id="recipient-blz" value="">
+        <input type="text" ng-model="transfer.recipientBIC" name="recipientBIC" id="recipient-blz" value="">
       </div>
       <div class="6u 12u(mobilep)">
         <label for="recipient">{{ 'FORM_AMMOUNT' | translate }}</label>
-        <input type="number" name="ammount" id="ammount" value="">
+        <input type="number" ng-model="transfer.ammount" name="ammount" id="ammount" value="">
       </div>
       <div class="6u 12u(mobilep)">
         <label for="recipient">{{ 'FORM_DATE' | translate }}</label>
-        <input type="date" name="date" id="date" value="">
+        <input type="date" ng-model="transfer.date" name="date" id="date" value="{{date | date:'yyyy-MM-dd'}}">
       </div>
       <div class="12u 12u(mobilep)">
         <label for="recipient">{{ 'FORM_REASON' | translate }}</label>
-        <input type="text" name="transfer-motive" id="transfer-motive">
+        <input type="text" ng-model="transfer.motive" name="motive" id="transfer-motive">
       </div>
     </div>
 
@@ -64,10 +65,71 @@
       <div class="12u">
         <div class="actions">
           <div class="btn-spacing">
-            <input type="button" ng-click="go('/confirm')"  value="{{ 'BUTTON_NEXT' | translate }}" style="background-color:red;">
+            <input type="button" ng-click="nextStep()"  value="{{ 'BUTTON_NEXT' | translate }}" style="background-color:red;">
           </div>
           <div>
             <input type="reset" value="{{ 'BUTTON_RESET' | translate }}" class="alt">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="transfer-end-view" style="display: none;">
+  <h2>{{ 'NAV_TRANSFER' | translate }}</h2>
+  <h4>Ihr Überweisungsauftrag</h4>
+  <div class="table-wrapper">
+    <table>
+      <tbody>
+      <tr>
+        <td>{{ 'RECIPIENT' | translate }}</td>
+        <td>{{transfer.recipient}}</td>
+      </tr>
+      <tr>
+        <td>{{ 'FORM_ACCOUNT_NUMBER' | translate }}</td>
+        <td>{{transfer.recipientIBAN}}</td>
+      </tr>
+      <tr>
+        <td>{{ 'FORM_BLZ' | translate }}</td>
+        <td>{{transfer.recipientBIC}}</td>
+      </tr>
+      <tr>
+        <td>{{ 'FORM_AMMOUNT' | translate }}</td>
+        <td>{{transfer.ammount}} EUR</td>
+      </tr>
+      <tr>
+        <td>{{ 'FORM_REASON' | translate }}</td>
+        <td>{{transfer.motive}}</td>
+      </tr>
+      <tr>
+        <td>{{ 'TRANSFER_OWNER' | translate }}</td>
+        <td>Max Mustermann</td>
+      </tr>
+      <tr ng-show="transfer.fromAccount">
+        <td>{{ 'TRANSFER_OWNER' | translate }} {{ 'ACCOUNT' | translate }}</td>
+        <td>{{transfer.fromAccount}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <form method="post" action="#">
+    <div class="row uniform 50%">
+      <div class="6u 12u(mobilep)">
+        <span style="line-height:3em;">iTAN</span>
+      </div>
+      <div class="6u 12u(mobilep)">
+        <input type="number" name="tan-number" id="tan-number" value="" placeholder="">
+      </div>
+    </div>
+    <div class="row uniform">
+      <div class="12u">
+        <div class="actions">
+          <div class="btn-spacing">
+            <input type="button" id="transConfirmBtn" ng-click="go('/finish')" value="{{ 'TRANSFER_ACTION_BTN' | translate }}" style="background-color:red;">
+          </div>
+          <div>
+            <input type="reset" value="{{ 'CANCEL_BTN' | translate}}" class="alt">
           </div>
         </div>
       </div>

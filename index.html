@@ -80,24 +80,24 @@
         </section>
 
         <section id="languages" class="box special features" ng-controller="LangCtrl">
-            <ul class="actions">
-                <li><a ng-click="changeLanguage('en')" class="button" lang="en">Englisch</a></li>
-                <li><a ng-click="changeLanguage('de')" class="button" lang="de">Deutsch</a></li>
-            </ul>
+            <div class="actions">
+                <div class="btn-spacing"><a ng-click="changeLanguage('en')" class="button" lang="en">Englisch</a></div>
+                <div><a ng-click="changeLanguage('de')" class="button" lang="de">Deutsch</a></div>
+            </div>
         </section>
 
     </section>
 
     <!-- Footer -->
     <footer id="footer">
-        <ul class="icons">
-            <li>
+        <div class="icons">
+            <div>
                 <a href="https://www.hdm-stuttgart.de/" class="icon">
                     <img src="images/hdm_logo.png" alt="Hochschule der Medien" height="30px" />
                     <!--span class="label">Twitter</span-->
                 </a>
-            </li>
-        </ul>
+            </div>
+        </div>
         <ul class="copyright">
             <li>Copyright 2012-2016 <abbr title="Hochschule der Medien">HdM</abbr> Stuttgart.</li>
             <li><a href="#/impressum"> {{ 'LEGAL_NOTICE_TITLE' | translate }} </a></li>

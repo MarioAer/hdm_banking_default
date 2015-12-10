@@ -135,7 +135,12 @@ app.controller('PageCtrl', function ( $scope, $location, $http) {
     angular.element( document.querySelector( '#acc_type') ).focus();
     angular.element( document.querySelector( '#transConfirmBtn') ).focus();
     angular.element( document.querySelector( '#transConfirmBtn') ).focus();
+
+    $scope.date = new Date();
+
 });
+
+
 
 app.config(function ($translateProvider) {
 	$translateProvider.translations('en', {
@@ -284,4 +289,13 @@ app.controller('bankMainCtrl', function($scope, $location, $cookies, $translate)
     $scope.go = function (path) {
         $location.path(path);
     }
+    // Generate variables for transaction
+    $scope.transfer;
+
+    $scope.nextStep = function() {
+        angular.element( document.querySelector( '.transfer-view') ).hide();
+        angular.element( document.querySelector( '.transfer-end-view') ).show();
+    }
+
+
 });
