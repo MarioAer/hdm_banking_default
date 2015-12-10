@@ -16,6 +16,10 @@
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
 
+    <!--ASPanel-->
+    <link href="ASpanel/css/normalize.css" rel="stylesheet" />
+    <link href="ASpanel/css/toolbar.css" rel="stylesheet">
+
     <style>
         .ngdialog-content {
             position: absolute;
@@ -35,15 +39,30 @@
         .btn-spacing {
             padding-bottom: 15px;
         }
+        #page-wrapper {
+            position: relative;
+        }
+        .header-left {
+            padding-left: 1.25em;
+            color: #fff;
+        }
+        .header-left a {
+            text-decoration: none;
+            border: none;
+            color: #fff;
+        }
     </style>
 
 </head>
 <body ng-app="hdmBankingLogin" class="landing">
+<div id="panel-container">
+    <iframe id="myASpanel-iFrame" frameborder="0" src="ASpanel/toolbar.html" height="100%" width="100%"></iframe>
+</div>
 <div id="page-wrapper">
 
     <!-- Header -->
     <header id="header" class="alt">
-        <h1><a href="#/">HdM Online Banking</a> - {{ 'UNIVERSITY_NAME' | translate }}</h1>
+        <div class="header-left"><a href="#/">HdM Online Banking</a> - {{ 'UNIVERSITY_NAME' | translate }}</div>
         <nav id="nav">
             <ul>
                 <li><a href="#/">{{ 'HOME' | translate }}</a></li>
@@ -123,6 +142,8 @@
 <script src="assets/js/angular-translate.min.js"></script>
 <script src="assets/js/angular-cookies.min.js"></script>
 
+
+
 <!--<script src="assets/js/main.js"></script>-->
 
 <script>
@@ -198,6 +219,7 @@
         });
 
         $translateProvider.preferredLanguage('en');
+        $translateProvider.useSanitizeValueStrategy('escape');
     });
 
     app.controller('MainCtrl', ['$scope', '$location', '$window', 'ngDialog', function ($scope, $location, $window, ngDialog) {
@@ -232,6 +254,23 @@
         });
     });
 
+</script>
+
+<script type="text/javascript" src="ASpanel/js/libs/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="ASpanel/js/libs/jquery.mypanel.js"></script>
+<script type="text/javascript" src="ASpanel/js/libs/jquery.tableofcontents.js"></script>
+<script type="text/javascript" src="ASpanel/js/functions/ASfunctions.js"></script>
+
+<script type="text/javascript">
+    var defaultTextStyle = null;
+    $(document).ready(function() {
+        $('#panel-container').mypanel({
+            tabText : 'Open/Close Toolbar',
+            openByDefault : true
+        });
+        $('#panel-container').css({"border": "none"});
+        //defaultTextStyle = getDefaultTextStyle();
+    });
 </script>
 
 </body>
