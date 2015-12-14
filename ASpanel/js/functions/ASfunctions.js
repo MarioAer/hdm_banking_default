@@ -1,5 +1,5 @@
 /*
-* Copyright 2015 Annabell Schmidt, Patrick Muenster
+* Copyright 2015 Hochschule der Medien (HdM) / Stuttgart Media University (Annabell Schmidt, Patrick Muenster)
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
@@ -30,12 +30,34 @@ var AS_textSize = (function() {
         return document.getElementById('myASpanel-iFrame').contentWindow.Toolbar.UIComponentList[0].defaultValue;
     };
 
+    function fontSize2Mulitplier(inputValue) {
+        if (inputValue < 1.0) {
+            inputValue = 1.0;
+        }
+        else if (inputValue == 3.0) {
+            inputValue = 3.0;
+        }
+        else if (inputValue > 3.0) {
+            if (inputValue < 12.0) {
+                inputValue = 1;
+            }
+            else if (inputValue >= 36.0) {
+                inputValue = 3;
+            } else if (inputValue > 12.0 && inputValue < 36.0) {
+                inputValue = 3.0 / 36.0 * inputValue;
+            }
+        }
+
+        return inputValue;
+    };
+
     /**
      * Changes the text size according to the parameter multiplier.
      * @param {number} multiplier   multiplier between 1 and 2 with which the text size is multiplied
      */
     module.set = function(multiplier) {
-        var newTextSize = parseFloat(1 * multiplier) + 'em';
+
+        var newTextSize = parseFloat(1 * fontSize2Mulitplier(multiplier)) + 'em';
         $('body').css('font-size', newTextSize);
     };
 
@@ -95,7 +117,7 @@ var AS_textStyle = (function() {
     module.reset = function() {
         $('body').css('font-family', '"' + getDefaultValue() + '"');
     };
-    
+
     // read default textstyle from CSS.
     readDefaultValue();
 
@@ -117,7 +139,7 @@ function getDefaultTextStyle() {
 /*
  * @author Patrick Münster
  *
- * Sets the line spacing .
+ * Sets the line spacing.
  */
 var AS_lineSpacing = (function() {
     var module = {};
@@ -160,10 +182,12 @@ var AS_picsupport = (function() {
 
     function activatePicsupport() {
         console.log("Picsupport activated");
+                
     }
 
     function deactivatePicsupport() {
         console.log("Picsupport deaktivated");
+         
     }
 
     /**
@@ -171,19 +195,20 @@ var AS_picsupport = (function() {
      * @param {string} value "on" or "off"
      */
     module.activate = function(value) {
-        if (value == "On") {
+        
+        if (value == "picsupport-on") {          
             activatePicsupport();
-        } else if (value == "Off") {
+        } else if (value == "picsupport-off") {
             deactivatePicsupport();
         }
     };
-    
+
     /**
      * Choose the used Language for the Picsupport according to the parameter.
      * @param {string} value UNFINISHED
      */
     module.setLanguage = function(value) {
-        
+
     };
 
     return module;
@@ -211,3 +236,4 @@ function AS_showTableOfContents(show) {
         $('#toc-container ul').text('');
     }
 }
+
