@@ -28,6 +28,7 @@ PS: Not sure how to get that contact form working? Give formspree.io a try (it's
 * Icons:
  * Font Awesome ([Font Awesome Licence](http://fortawesome.github.io/Font-Awesome/license/): for fonts: [http://scripts.sil.org/OFL](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL))
 * Other:
+ * Angular.js ([Angular.js licence](https://github.com/angular/angular.js/blob/master/LICENSE): MIT)
  * jQuery ([jQuery licence](https://jquery.org/license/): MIT)
  * html5shiv.js (@afarkas @jdalton @jon_neal @rem)
  * CSS3 Pie (css3pie.com; [PIE Licence](https://github.com/lojjic/PIE/blob/master/LICENSE): Apache 2.0 & GPL 2)
