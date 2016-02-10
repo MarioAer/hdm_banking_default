@@ -276,7 +276,7 @@ app.config(function ($translateProvider) {
     $translateProvider.useSanitizeValueStrategy('escape');
 });
 
-app.controller('bankMainCtrl', function($scope, $location, $cookies, $translate){
+app.controller('bankMainCtrl', function($scope, $location, $cookies, $translate, $http){
     $scope.isActive = function (path) {
         return path === $location.path();
     };
@@ -292,10 +292,31 @@ app.controller('bankMainCtrl', function($scope, $location, $cookies, $translate)
     // Generate variables for transaction
     $scope.transfer;
 
+    $scope.accountNumber = 'AC30345897';
+    $scope.customerID;
+
+    $http.get(  'http://localhost:3000/accounts/' + $scope.accountNumber,
+        { "headers": { "Authorization": "Basic " + btoa("bob" + ":" + "secret") }
+        })
+        .success(function(response) {
+            $scope.accountBalance = parseFloat(response[0].currentBalance)/100;
+            $scope.customerID = response[0].customerID;
+        })
+        .then(function() {
+            $http.get(  'http://localhost:3000/recipients/customer/' + $scope.customerID,
+                { "headers": { "Authorization": "Basic " + btoa("bob" + ":" + "secret") }
+                })
+                .success(function(response) {
+                    $scope.recipients = response;
+                })
+        });
+
     $scope.nextStep = function() {
         angular.element( document.querySelector( '.transfer-view') ).hide();
         angular.element( document.querySelector( '.transfer-end-view') ).show();
     }
+
+
 
 
 });
