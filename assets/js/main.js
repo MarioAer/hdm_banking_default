@@ -196,6 +196,7 @@ app.config(function ($translateProvider) {
         'FORM_REASON' : 'Transaction description (optional)',
         'BUTTON_NEXT' : 'Next',
         'BUTTON_RESET' : 'Reset',
+        'TRANS_HEADER_TXT': 'Your transfer request',
         'TRANSFER_ACTION_BTN' : 'Transfer Money',
         'CANCEL_BTN' : 'Cancel',
         // Account Control
@@ -260,6 +261,7 @@ app.config(function ($translateProvider) {
         'FORM_REASON' : 'Verwendungszweck',
         'BUTTON_NEXT' : 'Weiter',
         'BUTTON_RESET' : 'Reset',
+        'TRANS_HEADER_TXT': 'Ihr Überweisungsauftrag',
         'TRANSFER_ACTION_BTN' : 'Überweisen',
         'CANCEL_BTN' : 'Abbrechen',
         // Account Control

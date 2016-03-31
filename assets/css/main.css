@@ -18,7 +18,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: baseline;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+article, aside, details, figcaption, figure, footer, header, menu, nav, section {
     display: block;
 }
 
@@ -3766,4 +3766,27 @@ body.landing #main {
         padding: 2.5em 1em 3em 1em;
     }
 
+}
+
+.urclSignLanguageVideo {
+    height: 25px;
+    width: 25px;
+    background: url(../../images/Icon_Gebaerdensprache2.png) top no-repeat;
+    overflow: hidden;
+    color: transparent;
+    position: absolute;
+    background-size: 25px;
+    margin-left: 10px;
+    margin-top: -3px;
+    border: 1px solid #E4E4E4;
+    border-radius: 5px;
+}
+
+.urclSignLanguageVideo:hover{
+    text-decoration: none;
+    border: 1px solid #fff;
+}
+
+.urclSignLanguageVideo:focus{
+   outline: 3px solid dodgerblue;
 }

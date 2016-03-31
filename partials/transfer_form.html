@@ -34,28 +34,27 @@
   <form novalidate>
     <div class="row uniform 50%">
       <div class="12u 12u(mobilep)">
-        <label for="recipient">{{ 'FORM_NAME' | translate }}</label>
+        <label for="recipient">{{ 'FORM_NAME' | translate }} <a href="" title="Start sign language video for the word : Receiver" class="urclSignLanguageVideo" data-sl_content="Receiver">Reciever</a> </label>
         <input type="text" ng-model="transfer.recipient" name="recipient" id="recipient" value="">
       </div>
-
       <div class="12u 12u(mobilep)">
-        <label for="recipient">{{ 'FORM_ACCOUNT_NUMBER' | translate }}</label>
+        <label for="recipient-account">{{ 'FORM_ACCOUNT_NUMBER' | translate }} <a href="" title="Start sign language video for the word : AccountNumber" class="urclSignLanguageVideo" data-sl_content="AccountNumber"> recipientIBAN </a> </label>
         <input type="text" ng-model="transfer.recipientIBAN" name="recipientIBAN" id="recipient-account" value="">
       </div>
       <div class="12u 12u(mobilep)">
-        <label for="recipient">{{ 'FORM_BLZ' | translate }}</label>
+        <label for="recipient-blz">{{ 'FORM_BLZ' | translate }} <a href="" title="Start sign language video for the word : recipientBIC" class="urclSignLanguageVideo" data-sl_content="Receiver">recipientBIC</a> </label>
         <input type="text" ng-model="transfer.recipientBIC" name="recipientBIC" id="recipient-blz" value="">
       </div>
       <div class="6u 12u(mobilep)">
-        <label for="recipient">{{ 'FORM_AMMOUNT' | translate }}</label>
-        <input type="number" ng-model="transfer.ammount" name="ammount" id="ammount" value="">
+        <label for="ammount">{{ 'FORM_AMMOUNT' | translate }} <a href="" title="Start sign language video for the word : Amount" class="urclSignLanguageVideo" data-sl_content="Receiver">Amount</a> </label>
+        <input type="number" ng-model="transfer.ammount" name="amount" id="ammount" value="">
       </div>
       <div class="6u 12u(mobilep)">
-        <label for="recipient">{{ 'FORM_DATE' | translate }}</label>
+        <label for="date">{{ 'FORM_DATE' | translate }} <a href="" title="Start sign language video for the word : Date" class="urclSignLanguageVideo" data-sl_content="Receiver">Date</a> </label>
         <input type="date" ng-model="transfer.date" name="date" id="date" value="{{date | date:'yyyy-MM-dd'}}">
       </div>
       <div class="12u 12u(mobilep)">
-        <label for="recipient">{{ 'FORM_REASON' | translate }}</label>
+        <label for="transfer-motive">{{ 'FORM_REASON' | translate }} <a href="" title="Start sign language video for the word : Motive" class="urclSignLanguageVideo" data-sl_content="Receiver">Motive</a> </label>
         <input type="text" ng-model="transfer.motive" name="motive" id="transfer-motive">
       </div>
     </div>
@@ -78,7 +77,7 @@
 
 <div class="transfer-end-view" style="display: none;">
   <h2>{{ 'NAV_TRANSFER' | translate }}</h2>
-  <h4>Ihr Überweisungsauftrag</h4>
+  <h4>{{'TRANS_HEADER_TXT' | translate }}</h4>
   <div class="table-wrapper">
     <table>
       <tbody>
@@ -116,7 +115,7 @@
   <form method="post" action="#">
     <div class="row uniform 50%">
       <div class="6u 12u(mobilep)">
-        <span style="line-height:3em;">iTAN</span>
+        <label for="tan-number">iTAN <a href="" title="Start sign language video for the word : iTAN" class="urclSignLanguageVideo" data-sl_content="TransferAmount"> iTAN </a> </label>
       </div>
       <div class="6u 12u(mobilep)">
         <input type="number" name="tan-number" id="tan-number" value="" placeholder="">
