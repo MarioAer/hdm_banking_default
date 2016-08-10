@@ -66,6 +66,37 @@ function createComponent(component) {
     }
 }
 
+function registerHandlebarHelper() {
+     /**
+     * The helper ApplicationLabel provides all labels for the application.  
+     */  
+    Handlebars.registerHelper('ApplicationLabel', function(uiLabel) {
+
+        return uiLabel[getPanelLanguage()];
+        // example call: {{ApplicationLabel tabs.category_1}} 
+    });
+
+    /**
+     * The helper UIComponentLabel provides all labels for the components.
+     */
+    Handlebars.registerHelper('UIComponentLabel', function(componentLabel) {        
+
+       // gets any labels depending on the language.
+       return componentLabel[getPanelLanguage()];
+       // example call: {{UIComponentLabel textSize_silder.minText}}  
+    });
+
+     /**
+     * The helper UIComponentID provides all unique ids for the component elements.
+     */
+    Handlebars.registerHelper('UIComponentID', function(componentLabel) {        
+       return componentLabel;
+       // example call: {{UIComponentID ui_component_id}}  
+    });
+
+}
+
+
 /**
  * All ASpanel components with a default value that should be overwritten 
  * by GPII Chrome Extension should be called here. 
@@ -92,13 +123,14 @@ var textStyleDropdown;
 var picsupportDropdown;               
 var tableOfContent_ckb;
 
+var signLanguageLanguageDropdown;
+var signLanguageInterpreterNameDropdown;
+
+
 
 //////////////////
 ////// MAIN //////
 //////////////////
-
-
-
 
 
 $(function() {
@@ -123,38 +155,11 @@ $(function() {
         ////// REGISTER HANDLEBAR HELPER //////
         ///////////////////////////////////////
 
-        /**
-         * The helper ApplicationLabel provides all labels for the application.  
-         */  
-        Handlebars.registerHelper('ApplicationLabel', function(uiLabel) {
-
-            return uiLabel[getPanelLanguage()];
-            // example call: {{ApplicationLabel tabs.category_1}} 
-        });
-
-        /**
-         * The helper UIComponentLabel provides all labels for the components.
-         */
-        Handlebars.registerHelper('UIComponentLabel', function(componentLabel) {        
-
-           // gets any labels depending on the language.
-           return componentLabel[getPanelLanguage()];
-           // example call: {{UIComponentLabel textSize_silder.minText}}  
-        });
-
-         /**
-         * The helper UIComponentID provides all unique ids for the component elements.
-         */
-        Handlebars.registerHelper('UIComponentID', function(componentLabel) {        
-           return componentLabel;
-           // example call: {{UIComponentID ui_component_id}}  
-        });
-
+        registerHandlebarHelper();
 
         ////////////////////////////
         ////// INIT TEMPLATES //////
         ////////////////////////////
-
 
         /**
          * Create category tabs with category-tabs-template.
@@ -174,8 +179,12 @@ $(function() {
 
         // //console.log(html);
         // $("#category-1").html(html);
-
+        
+        // HTML string for tabs
         var html_cat1 = "";
+        var html_cat2 = "";
+        var html_cat3 = "";
+        var html_cat4 = "";
 
         for (var component in UIComponentList) {
             /** 
@@ -189,9 +198,23 @@ $(function() {
             switch(UIComponentList[component].category) {
 
                 case "cat1":
-
                     html_cat1 += createComponent(UIComponentList[component]);            
                     break;
+                    
+                case "cat2":          
+                    html_cat2 += createComponent(UIComponentList[component]);
+                    break;
+                
+                case "cat3":          
+                    html_cat3 += createComponent(UIComponentList[component]);
+                    break;
+                    
+                case "cat4":          
+                    html_cat4 += createComponent(UIComponentList[component]);
+                    break;
+                    
+                default:
+                    break; 
             }
         }
 
@@ -199,6 +222,9 @@ $(function() {
 
         // Append html code.
         $("#category-1-dynamic-components .componentlist").html(html_cat1);
+        $("#category-2-dynamic-components .componentlist").html(html_cat2);
+        $("#category-3-dynamic-components .componentlist").html(html_cat3);
+        $("#category-4-dynamic-components .componentlist").html(html_cat4);
 
 
         //var category_1_components_source = $("#category-1-components").html();
@@ -207,7 +233,6 @@ $(function() {
         //var html = category_1_components_template(UIComponentList.textSize_slider);
         //console.log(html);
         //html = html + category_1_components_template(UIComponentList);
-        //console.log(html);
         //console.log(html);
         //$("#category-1-dynamic-components .componentlist").html(html);
 
@@ -228,9 +253,9 @@ $(function() {
         //$("#picsupport_dropdown").selectmenu();
 
 
-        ////////////////////////////
-        ////// INIT COMPONETS //////
-        ////////////////////////////
+        /////////////////////////////
+        ////// INIT COMPONENTS //////
+        /////////////////////////////
 
         //#### Slider ####
 
@@ -250,7 +275,11 @@ $(function() {
         tableOfContent_ckb.init("table_of_content");
         //console.log(tableOfContent_ckb.getValue());
 
-
+        signLanguageLanguageDropdown = new AS_DropDown();
+        signLanguageLanguageDropdown.init("signlanguageLanguage_dropdown");
+        
+        signLanguageInterpreterNameDropdown = new AS_DropDown();
+        signLanguageInterpreterNameDropdown.init("signlanguageInterpreterName_dropdown");
 
         ////////////////////////////
         ////// RESET FUNCTIONS /////
@@ -265,6 +294,8 @@ $(function() {
              textSizeSlider.reset();
              tableOfContent_ckb.reset();
              textStyleDropdown.reset();
+             signLanguageLanguageDropdown.reset();
+             signLanguageInterpreterNameDropdown.reset();
         }
 
         /////////////////////////////////
@@ -303,24 +334,13 @@ $(function() {
 
         // Add Listener to Reset Button.
         document.getElementById("myButton").addEventListener('click', function() {
-            overwriteDefault(); //@@todo: Pressing "Zurücksetzen" triggers an exception (Chrome console): Uncaught ReferenceError: overwriteDefault is not defined
+            //overwriteDefault(); //@@todo: Pressing "Zurücksetzen" triggers an exception (Chrome console): Uncaught ReferenceError: overwriteDefault is not defined
             resetAll();
         }, false);
 
-        // $("#textSize-slider").slider({
-        // range : "min",
-        // min : 1,
-        // max : 2,
-        // value : 1,
-        // step : 0.1,
-        // slide : function(event, ui) {
-        // $("#textSize").val(ui.value);
-        // }
-        // });
-        // $("#textSize").val($("#textSize-slider").slider("value"));
-
-        // end of GPIIConnector call
-    });
+        
+       
+    });  // end of GPIIConnector call
 
 });
 
@@ -328,8 +348,6 @@ $(function() {
 function init() {
     //console.log(textSizeSlider.title);
 
-
-    //
 }
 
 $(document).ready(function(){

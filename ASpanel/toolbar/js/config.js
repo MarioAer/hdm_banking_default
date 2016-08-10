@@ -25,21 +25,6 @@ TYPE_CHECKBOX = 'checkbox';
 LANGUAGE = 'en';
 NEW_INIT = true;
 
-// config data
-CategoryList = [{
-    category_id : "cat1", // id is used as an attribute in html-tags, needs to be application-wide unique
-    name : {
-        en : "Text and Display",
-        de : "Text und Anzeige"
-    }
-}, {
-    category_id : "cat2",
-    name : {
-        en : "Layout and Navigation",
-        de : "Layout und Navigation"
-    }
-}];
-
 
 /**********************/
 /* APPLICATION LABELS */
@@ -153,7 +138,9 @@ var UIComponentList = {
         category : "cat1",
         type : TYPE_SLIDER,
         changeEvent : function(value) {
-            parent.AS_lineSpacing.set(value);
+            if (parent.AS_lineSpacing != undefined) {
+                parent.AS_lineSpacing.set(value);
+            }
         },
         minValue : 1,
         maxValue : 3,
@@ -208,7 +195,9 @@ var UIComponentList = {
             name : "Comic Sans MS"
         }],
         changeEvent : function(value) {
-            parent.AS_textStyle.change(value);
+            if (parent.AS_textStyle != undefined) {
+                parent.AS_textStyle.change(value);
+            }
         }
     },
 
@@ -254,7 +243,7 @@ var UIComponentList = {
         },
         defaultValue : false,
         defaultValue : false,
-        category : "cat1",
+        category : "cat2",
         type : TYPE_CHECKBOX,
         explanation : {
             en : "Adds a table of contents to the top of the page.",
@@ -264,6 +253,69 @@ var UIComponentList = {
             parent.AS_showTableOfContents(value);
         }
     },
+    
+    signlanguageLanguage_dropdown : {
+
+       ui_component_id : "signlanguageLanguage_dropdown",
+       title : {
+            en : 'Sign Language',
+            de : 'Gebärdensprache'
+        },
+        defaultValue : {
+            option_id : "gsg",
+            name : "Deutsche Gebärdensprache (GSG)"
+        },
+        resetValue : {
+            option_id : "gsg",
+            name : "Deutsche Gebärdensprache (GSG)"
+        },
+        category : "cat4",
+        type : TYPE_DROPDOWN,
+        options : [{
+            option_id : "gsg",
+            name : "Deutsche Gebärdensprache (GSG)"
+        }, {
+            option_id : "asl",
+            name : "American Sign Language (ASL)"
+        }],
+        changeEvent : function(value) {
+            parent.slSettings.Language = value;
+            parent.myURCLightController.lockSLVOptions(value);
+        }
+    },
+    
+    signlanguageInterpreterName_dropdown : {
+
+       ui_component_id : "signlanguageInterpreterName_dropdown",
+       title : {
+            en : 'Interpreter Name',
+            de : 'Interpreter Name'
+        },
+        defaultValue : {
+            option_id : "Feldmann",
+            name : "Feldmann"
+        },
+        resetValue : {
+            option_id : "Feldmann",
+            name : "Feldmann"
+        },
+        category : "cat4",
+        type : TYPE_DROPDOWN,
+        options : [{
+            option_id : "Maria",
+            name : "Maria"
+        }, {
+            option_id : "Tony",
+            name : "Tony"
+        }, {
+            option_id : "Feldmann",
+            name : "Feldmann"
+        }],
+        changeEvent : function(value) {
+            parent.slSettings.InterpreterName = value;
+        }
+    },
+    
    
 };
 

@@ -36,16 +36,20 @@
             padding: 13px 30px;
             border-radius: 6px;
         }
+
         .btn-spacing {
             padding-bottom: 15px;
         }
+
         #page-wrapper {
             position: relative;
         }
+
         .header-left {
             padding-left: 1.25em;
             color: #fff;
         }
+
         .header-left a {
             text-decoration: none;
             border: none;
@@ -143,7 +147,6 @@
 <script src="assets/js/angular-cookies.min.js"></script>
 
 
-
 <!--<script src="assets/js/main.js"></script>-->
 
 <script>
@@ -156,12 +159,12 @@
 
     app.config(['$routeProvider', function ($routeProvider) {
         $routeProvider
-            // Home
-                .when("/", {templateUrl: "templates/information.html", controller: "PageCtrl"})
+        // Home
+            .when("/", {templateUrl: "templates/information.html", controller: "PageCtrl"})
             // Transfer Form
-                .when("/impressum", {templateUrl: "templates/impressum.html", controller: "PageCtrl"})
+            .when("/impressum", {templateUrl: "templates/impressum.html", controller: "PageCtrl"})
             // 404 Error
-                .otherwise("/404", {templateUrl: "templates/404.html", controller: "PageCtrl"});
+            .otherwise("/404", {templateUrl: "templates/404.html", controller: "PageCtrl"});
     }]);
 
     app.config(function ($translateProvider) {
@@ -207,13 +210,13 @@
             'ACTION_CANCEL' : 'Abbrechen',
             'ACTION_LOGIN' : 'Einloggen',
             'INFO_HEADER_1' : 'ASPanel',
-            'INFO_CONTENT_1' : 'With the help of ASPanel is it possible to automatically create accessible Web pages. ',
+            'INFO_CONTENT_1' : 'Mit Hilfe von ASPanel ist es möglich, automatisch zugänglichen Webseiten erstellen. ',
             'INFO_HEADER_2' : 'Simplified IU',
-            'INFO_CONTENT_2' : 'The simplified UI is an experimental simplified user interface created for user with cognitive dificulties.',
+            'INFO_CONTENT_2' : 'Die vereinfachte Benutzeroberfläche ist eine experimentelle vereinfachte Benutzeroberfläche für Benutzer mit kognitiven dificulties erstellt.',
             'INFO_HEADER_3' : 'Cloud4All',
-            'INFO_CONTENT_3' : 'All the devices you use during the day could automatically adapt to your needs and preferences.',
+            'INFO_CONTENT_3' : 'Alle Geräte anpassen sich während des Tages automatisch an Ihre Bedürfnisse und Vorlieben.',
             'INFO_HEADER_4' : 'GPII',
-            'INFO_CONTENT_4' : 'Ensure that everyone can access and use the Internet and all its information and services.',
+            'INFO_CONTENT_4' : 'Jeder sollte Zugriff auf das Internet und alle seine Informationen und Dienste haben.',
             'LEGAL_NOTICE_TITLE' : 'Impressum',
             'LEGAL_NOTICE_CONTENT' : 'DE Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.'
         });
@@ -238,12 +241,12 @@
     }]);
 
     app.controller('PageCtrl', function (/* $scope, $location, $http */) {
-        console.log("Page Controller reporting for duty.");
     });
 
     app.controller('LangCtrl', function ($scope, $translate, $cookies) {
         $scope.changeLanguage = function (key) {
             $translate.use(key);
+            console.log(key);
             $cookies.put('HdMBankLang', key);
         };
         angular.element(document).ready(function () {
@@ -259,7 +262,12 @@
 <script type="text/javascript" src="ASpanel/js/libs/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="ASpanel/js/libs/jquery.mypanel.js"></script>
 <script type="text/javascript" src="ASpanel/js/libs/jquery.tableofcontents.js"></script>
+<script type="text/javascript" src="ASpanel/js/libs/jquery-ui-1.11.4/jquery-ui.js"></script>
+
 <script type="text/javascript" src="ASpanel/js/functions/ASfunctions.js"></script>
+
+<script type="text/javascript" src="ASpanel/js/URClight/MyURCLightController.js"></script>
+<script type="text/javascript" src="ASpanel/js/URClight/myvideo.js"></script>
 
 <script type="text/javascript">
     var defaultTextStyle = null;
