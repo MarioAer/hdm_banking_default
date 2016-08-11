@@ -9,58 +9,58 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
-    <!--ASPanel-->
-  	<link href="ASpanel/toolbar/css/normalize.css" rel="stylesheet" />
-    <link href="ASpanel/toolbar/css/aspanel.css" rel="stylesheet">
+	<!--ASPanel-->
+	<link href="ASpanel/toolbar/css/normalize.css" rel="stylesheet" />
+	<link href="ASpanel/toolbar/css/aspanel.css" rel="stylesheet">
 
-    <style>
-        .log-out-btn{
-            background-color: red;
-            padding: 0.6em 1.5em;
-            border-radius: 5px;
-            color: white;
-            text-decoration: none;
-            border: none;
-            font-weight: bold;
-        }
-        .log-out-btn:hover{
-            background-color: #737373;
-        }
-        #navButton, #navPanel, .hidden {
-            display: none !important;
-        }
-        .bank-nav li:hover {
-            background-color: #e5e5e5;
-            cursor: pointer;
-        }
-        .bank-nav a {
-            border: none;
-            color: red;
-            padding: 0.4em 2em;
-            font-weight: 500;
-        }
-        .bank-nav a.active {
-            color: #737373;
-        }
-        ul.alt li:first-child {
-            padding-top: 0.5em;
-        }
+	<style>
+		.log-out-btn{
+			background-color: red;
+			padding: 0.6em 1.5em;
+			border-radius: 5px;
+			color: white;
+			text-decoration: none;
+			border: none;
+			font-weight: bold;
+		}
+		.log-out-btn:hover{
+			background-color: #737373;
+		}
+		#navButton, #navPanel, .hidden {
+			display: none !important;
+		}
+		.bank-nav li:hover {
+			background-color: #e5e5e5;
+			cursor: pointer;
+		}
+		.bank-nav a {
+			border: none;
+			color: red;
+			padding: 0.4em 2em;
+			font-weight: 500;
+		}
+		.bank-nav a.active {
+			color: #737373;
+		}
+		ul.alt li:first-child {
+			padding-top: 0.5em;
+		}
 		.btn-spacing {
 			padding-bottom: 15px;
 		}
-        #page-wrapper {
-            position: relative;
-            padding-top: 0;
-        }
-        .header-left {
-            padding-left: 1.25em;
-            color: #fff;
-        }
-        .header-left a {
-            text-decoration: none;
-            border: none;
-            color: #fff;
-        }
+		#page-wrapper {
+			position: relative;
+			padding-top: 0;
+		}
+		.header-left {
+			padding-left: 1.25em;
+			color: #fff;
+		}
+		.header-left a {
+			text-decoration: none;
+			border: none;
+			color: #fff;
+		}
 
 		/*videos*/
 
@@ -77,130 +77,136 @@
 			text-align: center;
 		}
 
-    </style>
+		input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+			outline: 3px solid dodgerblue;
+			border-color: rgb(247, 247, 247);;
+			box-shadow: none;
+		}
+
+	</style>
 
 </head>
 
 <body ng-app="hdmBankingApp">
 
-    <div id="panel-container">
-        <iframe id="myASpanel-iFrame" frameborder="0" src="ASpanel/toolbar/toolbar.html" height="100%" width="100%"></iframe>
-    </div>
+<div id="panel-container">
+	<iframe id="myASpanel-iFrame" frameborder="0" src="ASpanel/toolbar/toolbar.html" height="100%" width="100%"></iframe>
+</div>
 
-	<div id="page-wrapper" ng-controller="bankMainCtrl">
+<div id="page-wrapper" ng-controller="bankMainCtrl">
 
-		<!-- Header -->
-		<nav ng-include='"templates/header.html"' role="navigation"></nav>
+	<!-- Header -->
+	<nav ng-include='"templates/header.html"' role="navigation"></nav>
 
-		<!--Main-->
-		<section id="main" role="main" class="container" style="padding: 2em 0">
+	<!--Main-->
+	<section id="main" role="main" class="container" style="padding: 2em 0">
 
-			<section ng-class="{hidden:isActive('/logout')}" class="box" style="padding: 1em;">
-				<div class="row">
-					<div class="4u 12u(mobilep)">
-						<span>{{ 'WELCOME' | translate }}</span>
-					</div>
-					<div class="8u 12u(mobilep)" style="text-align: right">
-						<a class="log-out-btn" href="#/logout">{{ 'LOGOUT' | translate }}</a>
-					</div>
+		<section ng-class="{hidden:isActive('/logout')}" class="box" style="padding: 1em;">
+			<div class="row">
+				<div class="4u 12u(mobilep)">
+					<span>{{ 'WELCOME' | translate }}</span>
 				</div>
-			</section>
-
-			<section id="features" class="box special features">
-				<div class="row">
-
-					<div class="4u 12u(mobilep) bank-nav" ng-class="{hidden:isActive('/logout')}">
-						<ul class="alt">
-							<li><a ng-class="{active:isActive('/')}" href="#/">{{ 'NAV_OVERVIEW' | translate }}</a></li>
-							<li><a ng-class="{active:isActive('/transactions')}" href="#/transactions">{{ 'NAV_AMOUNTS' | translate }}</a></li>
-							<li><a ng-class="{active:isActive('/newTransaction')}" href="#/newTransaction">{{ 'NAV_TRANSFER' | translate }}</a></li>
-							<li><a ng-class="{active:isActive('/accontrol')}" ng-click="" href="#/accontrol">{{ 'NAV_ACCOUNT_CONTROL' | translate }}</a></li>
-						</ul>
-					</div>
-
-					<div class="8u 12u(mobilep)">
-
-						<div ng-view></div>
-
-					</div>
+				<div class="8u 12u(mobilep)" style="text-align: right">
+					<a class="log-out-btn" href="#/logout">{{ 'LOGOUT' | translate }}</a>
 				</div>
-			</section>
-
+			</div>
 		</section>
 
-		<!-- Footer -->
-		<footer id="footer" role="footer">
-			<ul class="icons">
-				<li>
-					<a href="#" class="icon">
-						<img src="images/hdm_logo.png" height="30px"/>
-						<span class="label">Twitter</span>
-					</a>
-				</li>
-			</ul>
-			<ul class="copyright">
-				<li>Nobelstraße 10, 70569 Stuttgart</li>
-			</ul>
-			<ul class="copyright">
-				<li>HdM Stuttgart. REMEX. </li>
-				<li>{{ 'LEGAL_NOTICE_TITLE' | translate }} </li>
-				<li>Design: Based on <a href="http://html5up.net">HTML5 UP</a></li>
-			</ul>
-		</footer>
+		<section id="features" class="box special features">
+			<div class="row">
 
-	</div>
+				<div class="4u 12u(mobilep) bank-nav" ng-class="{hidden:isActive('/logout')}">
+					<ul class="alt">
+						<li><a ng-class="{active:isActive('/')}" href="#/">{{ 'NAV_OVERVIEW' | translate }}</a></li>
+						<li><a ng-class="{active:isActive('/transactions')}" href="#/transactions">{{ 'NAV_AMOUNTS' | translate }}</a></li>
+						<li><a ng-class="{active:isActive('/newTransaction')}" href="#/newTransaction">{{ 'NAV_TRANSFER' | translate }}</a></li>
+						<li><a ng-class="{active:isActive('/accontrol')}" ng-click="" href="#/accontrol">{{ 'NAV_ACCOUNT_CONTROL' | translate }}</a></li>
+					</ul>
+				</div>
 
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.dropotron.min.js"></script>
-	<script src="assets/js/jquery.scrollgress.min.js"></script>
-	<script src="assets/js/skel.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="assets/js/angular.min.js"></script>
-	<script src="assets/js/angular-aria.js"></script>
-	<script src="assets/js/angular-route.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/angular-translate.min.js"></script>
-	<script src="assets/js/angular-cookies.min.js"></script>
+				<div class="8u 12u(mobilep)">
 
-	<div id="navButton">
-		<a href="#navPanel" class="toggle"></a>
-	</div>
-	<div id="navPanel">
-		<nav>
-			<a class="link depth-0" href="index.html" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-				<span class="indent-0"></span>Home</a>
-			<a class="link depth-0" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-				<span class="indent-0"></span>Documentation</a>
-			<a class="link depth-0" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-				<span class="indent-0"></span>GPII</a>
-		</nav>
-	</div>
+					<div ng-view></div>
 
-	<script type="text/javascript" src="ASpanel/js/libs/jquery-1.10.2.js"></script>
-	<script type="text/javascript" src="ASpanel/js/libs/jquery.mypanel.js"></script>
-	<script type="text/javascript" src="ASpanel/js/libs/jquery.tableofcontents.js"></script>
-	<script type="text/javascript" src="ASpanel/js/libs/jquery-ui-1.11.4/jquery-ui.js"></script>
-	
-	<script type="text/javascript" src="ASpanel/js/functions/ASfunctions.js"></script>
-	
-	<script type="text/javascript" src="ASpanel/js/URClight/MyURCLightController.js"></script>
-	<script type="text/javascript" src="ASpanel/js/URClight/myvideo.js"></script>
-	
+				</div>
+			</div>
+		</section>
 
-	<script type="text/javascript">
-		var defaultTextStyle = null;
-		$(document).ready(function() {
-			$('#panel-container').mypanel({
-				tabText : 'Open/Close Toolbar',
-				openByDefault : true
-			});
-			$('#panel-container').css({"border": "none"});
-			//defaultTextStyle = getDefaultTextStyle();
+	</section>
+
+	<!-- Footer -->
+	<footer id="footer" role="footer">
+		<ul class="icons">
+			<li>
+				<a href="#" class="icon">
+					<img src="images/hdm_logo.png" height="30px"/>
+					<span class="label">Twitter</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="copyright">
+			<li>Nobelstraße 10, 70569 Stuttgart</li>
+		</ul>
+		<ul class="copyright">
+			<li>HdM Stuttgart. REMEX. </li>
+			<li>{{ 'LEGAL_NOTICE_TITLE' | translate }} </li>
+			<li>Design: Based on <a href="http://html5up.net">HTML5 UP</a></li>
+		</ul>
+	</footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/jquery.scrollgress.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="assets/js/angular.min.js"></script>
+<script src="assets/js/angular-aria.js"></script>
+<script src="assets/js/angular-route.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/angular-translate.min.js"></script>
+<script src="assets/js/angular-cookies.min.js"></script>
+
+<div id="navButton">
+	<a href="#navPanel" class="toggle"></a>
+</div>
+<div id="navPanel">
+	<nav>
+		<a class="link depth-0" href="index.html" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+			<span class="indent-0"></span>Home</a>
+		<a class="link depth-0" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+			<span class="indent-0"></span>Documentation</a>
+		<a class="link depth-0" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+			<span class="indent-0"></span>GPII</a>
+	</nav>
+</div>
+
+<script type="text/javascript" src="ASpanel/js/libs/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="ASpanel/js/libs/jquery.mypanel.js"></script>
+<script type="text/javascript" src="ASpanel/js/libs/jquery.tableofcontents.js"></script>
+<script type="text/javascript" src="ASpanel/js/libs/jquery-ui-1.11.4/jquery-ui.js"></script>
+
+<script type="text/javascript" src="ASpanel/js/functions/ASfunctions.js"></script>
+
+<script type="text/javascript" src="ASpanel/js/URClight/MyURCLightController.js"></script>
+<script type="text/javascript" src="ASpanel/js/URClight/myvideo.js"></script>
+
+
+<script type="text/javascript">
+	var defaultTextStyle = null;
+	$(document).ready(function() {
+		$('#panel-container').mypanel({
+			tabText : 'Open/Close Toolbar',
+			openByDefault : true
 		});
-	</script>
-	
+		$('#panel-container').css({"border": "none"});
+		//defaultTextStyle = getDefaultTextStyle();
+	});
+</script>
+
 </body>
 
 </html>
